@@ -14,15 +14,16 @@ function btnMoveText() {
         clearTimeout()
         moveLock = true
         mainBox.style.transform = 'scale(1)'
-        headerBox.style.transform = 'translateX(35vw)'
+        headerBox.style.transform = 'translateX(25vw)'
         setTimeout(() => {
             headerBtn.innerHTML = 'Back'
-            headerBox.style.transform = 'translate(35vw,-25vh)'
+            headerBox.style.transform = 'translate(25vw,-30vh)'
         }, 500)
     } else {
         clearTimeout()
         moveLock = false
-        headerBox.style.transform = 'translate(35vw,0vh)'
+        mainBox.style.transformOrigin = 'center'
+        headerBox.style.transform = 'translate(25vw,0vh)'
         setTimeout(() => {
             headerBtn.innerHTML = 'Listen Quiet'
             mainBox.style.transform = 'scale(0)'

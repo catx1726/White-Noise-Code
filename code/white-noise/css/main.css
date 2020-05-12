@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: consolas;
 }
 .container {
     height: 100vh;
@@ -43,27 +44,9 @@
     /* height: 50vh; */
     width: 50vw;
     transform: scale(0);
-
+    transform-origin: left;
     transition: all 0.6s ease;
 }
-
-.move-l-t {
-    transform: translate(35vw, -25vh);
-}
-
-.move-clear {
-    transform: translate(0, 0);
-}
-
-@keyframes move-l-t {
-    50% {
-        transform: translateX(35vw);
-    }
-    100% {
-        transform: translate(35vw, -25vh);
-    }
-}
-
 .source-container {
     list-style: none;
     position: relative;
