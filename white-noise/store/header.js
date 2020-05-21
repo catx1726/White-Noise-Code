@@ -1,8 +1,5 @@
 export const state = () => ({
-  navList: [
-    { link: '/', text: '首页' },
-    { link: '/about', text: '关于' }
-  ]
+  navList: [{ link: '/about', text: 'About' }]
 })
 
 export const getters = {

@@ -1,6 +1,9 @@
 <template>
   <div class="header-container">
-    <v-btn v-for="item in navList" :key="item.link" text :to="item.link">{{ item.text }}</v-btn>
+    <div class="logo">WhiteNoise</div>
+    <v-btn v-for="item in navList" :key="item.link" text :to="item.link">
+      {{ item.text }}
+    </v-btn>
   </div>
 </template>
 
@@ -40,5 +43,12 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  .logo {
+    padding-left: 20px;
+    user-select: none;
+    font-size: 25px;
+    flex-grow: 1;
+    position: relative;
+  }
 }
 </style>

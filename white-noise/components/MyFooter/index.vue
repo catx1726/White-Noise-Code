@@ -40,5 +40,6 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  background-color: grey;
 }
 </style>

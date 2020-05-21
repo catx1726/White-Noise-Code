@@ -1,19 +1,54 @@
 <template>
-  <main class="index-container">
-    Index
+  <main class="index-container" :style="'background-image: url(' + './imgs/' + bgImgSrc + ')'">
+    <div class="test-nonblur">
+      <SourceList :bg-img-src.sync="bgImgSrc" />
+    </div>
   </main>
 </template>
 
 <script>
+import SourceList from '~/components/SourceList'
 export default {
-  components: {}
+  components: {
+    SourceList
+  },
+  data() {
+    return {
+      bgImgSrc: 'window.jpg' // 由子组件更新
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .index-container {
-  background-size: contain;
+  height: 100vh;
+  background-size: cover;
   background-position: center;
-  background-image: url('/imgs/TV-80 玲.png');
+  background-attachment: fixed;
+  // background-image: url('/imgs/window-831251_1920.jpg');
+  .test-nonblur {
+    z-index: 1;
+    overflow: hidden;
+    color: white;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      // margin: -30px;
+      // filter: blur(5px);
+      // background-attachment: fixed;
+      // background-size: cover;
+      // background-position: center;
+      background-color: rgba(0, 0, 0, 0.8);
+
+      // background-image: url('/imgs/window-831251_1920.jpg');
+    }
+  }
 }
 </style>
