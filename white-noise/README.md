@@ -1,6 +1,6 @@
-# white-noise
+# Nuxt-Template
 
-> 白噪音网站
+> 预配有 Vuex / Axios / layout / eslint / prettier
 
 ## Build Setup
 
