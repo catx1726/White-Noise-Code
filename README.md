@@ -27,7 +27,7 @@
 
 ## 参考网站
 
-> 1. https://rainyscope.com，超漂亮的UI，有机会也把那个 WebGL 的雨水插件给装上，太漂亮了！
+> 1. https://rainyscope.com ，超漂亮的UI，有机会也把那个 WebGL 的雨水插件给装上，太漂亮了！
 > 2. https://freesound.org ，70%音频来自该网站，超棒的一个网站！
 
 ## Footer 
