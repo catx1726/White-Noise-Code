@@ -55,7 +55,8 @@ export default {
 .img-preload {
   position: absolute;
   left: -9999px;
-  top: -1000px;
+  // OK 修复留白BUG，未提交
+  top: -9999px;
   z-index: -100;
 }
 </style>
