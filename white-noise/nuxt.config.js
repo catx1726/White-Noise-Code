@@ -101,6 +101,7 @@ export default {
     extend(config, ctx) {}
   },
   router: {
-    base: 'White-Noise/site-dist/'
+    // base: 'White-Noise/site-dist/'
+    base: '/'
   }
 }
