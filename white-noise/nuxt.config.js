@@ -103,6 +103,7 @@ export default {
   router: {
     // base: 'White-Noise/site-dist/'
     // base: '/'
-    base: '../../'
+    // base: '../../'
+    base: '../'
   }
 }
