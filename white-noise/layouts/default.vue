@@ -1,5 +1,12 @@
 <template>
   <v-app :style="'background-image: url(' + './imgs/' + bgImg + ')'" class="app-container">
+    <div class="img-preload">
+      <img src="/White-Site/imgs/fire-warm.jpg" alt="" />
+      <img src="/White-Site/imgs/window.jpg" alt="" />
+      <img src="/White-Site/imgs/water.jpg" alt="" />
+      <img src="/White-Site/imgs/window-831251_1920.jpg" alt="" />
+      <img src="/White-Site/imgs/taxi-rain.jpg" alt="" />
+    </div>
     <MyHeader />
     <Nuxt class="content-container" />
   </v-app>
@@ -44,5 +51,11 @@ export default {
   text-transform: uppercase;
   color: white;
   transition: all 0.3s ease;
+}
+.img-preload {
+  position: absolute;
+  left: -9999px;
+  top: -1000px;
+  z-index: -100;
 }
 </style>

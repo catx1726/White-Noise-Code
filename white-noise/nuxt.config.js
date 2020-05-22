@@ -16,7 +16,7 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/White-Site/favicon.svg' }]
   },
 
   /*
@@ -104,6 +104,7 @@ export default {
     // base: 'White-Noise/site-dist/'
     // base: '/'
     // base: '../../'
-    base: '../site-dist/'
+    base: '/White-Site/'
+    // base:'/'
   }
 }

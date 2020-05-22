@@ -174,12 +174,14 @@ export default {
 <style lang="scss" scoped>
 .source-container {
   width: 50vw;
-
+  @media screen and(max-width: 600px) {
+    width: 90vw;
+  }
   transition: all 0.3s ease;
   .tab-container {
     display: flex;
     font-size: 50px;
-    max-height: 100px;
+    // max-height: 100px;
     padding-bottom: 10px;
     margin-bottom: 20px;
     border-bottom: 1px solid white;
