@@ -1,7 +1,7 @@
 <template>
-  <main class="index-container" :style="'background-image: url(' + './imgs/' + bgImgSrc + ')'">
+  <main class="index-container">
     <div class="test-nonblur">
-      <SourceList :bg-img-src.sync="bgImgSrc" />
+      <SourceList />
     </div>
   </main>
 </template>
@@ -13,9 +13,7 @@ export default {
     SourceList
   },
   data() {
-    return {
-      bgImgSrc: 'window.jpg' // 由子组件更新
-    }
+    return {}
   }
 }
 </script>

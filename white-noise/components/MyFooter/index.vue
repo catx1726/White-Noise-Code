@@ -7,7 +7,7 @@
       icon
       href="https://github.com/catx1726"
     >
-      <v-icon dark>mdi-github</v-icon>
+      <v-icon light>mdi-github</v-icon>
     </v-btn>
   </div>
 </template>

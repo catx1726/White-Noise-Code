@@ -1,7 +1,14 @@
 <template>
   <div class="header-container">
     <div class="logo">WhiteNoise</div>
-    <v-btn v-for="item in navList" :key="item.link" text :to="item.link">
+    <v-btn
+      v-for="item in navList"
+      :id="item.text"
+      :key="item.link"
+      text
+      :to="item.link"
+      color="white"
+    >
       {{ item.text }}
     </v-btn>
   </div>
@@ -15,6 +22,8 @@ export default {
   components: {},
   data() {
     return {
+      DOC: {},
+      ui: true,
       navList: []
     }
   },
@@ -25,12 +34,24 @@ export default {
 
   beforeMount() {},
 
-  mounted() {},
+  mounted() {
+    this.DOC = document
+    const uiBtn = this.DOC.querySelector('#UI')
+    uiBtn.addEventListener('click', this.showUI)
+  },
 
   created() {
     this.navList = this.getNavList()
   },
   methods: {
+    showUI() {
+      const container = this.DOC.querySelector('.content-container')
+      const logo = this.DOC.querySelector('.logo')
+      this.ui = !this.ui
+      const tempOpcity = this.ui ? '1' : '0'
+      container.style = 'opacity:' + tempOpcity
+      logo.style = 'opacity:' + tempOpcity
+    },
     ...mapGetters({
       getNavList: 'header/getAllNavList'
     })
@@ -44,11 +65,13 @@ export default {
   justify-content: flex-end;
   align-items: center;
   .logo {
+    color: white;
     padding-left: 20px;
     user-select: none;
     font-size: 25px;
     flex-grow: 1;
     position: relative;
+    transition: all 0.3s ease;
   }
 }
 </style>
