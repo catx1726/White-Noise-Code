@@ -44,7 +44,8 @@ export default {
 }
 .content-container {
   height: 80vh;
-  font-size: 100px;
+  // OK 修复瞬间字体超大BUG
+  // font-size: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,7 +56,7 @@ export default {
 .img-preload {
   position: absolute;
   left: -9999px;
-  // OK 修复留白BUG，未提交
+  // OK 修复留白BUG
   top: -9999px;
   z-index: -100;
 }
