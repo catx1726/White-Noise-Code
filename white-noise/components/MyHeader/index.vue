@@ -1,6 +1,6 @@
 <template>
   <div class="header-container">
-    <div class="logo">WhiteNoise</div>
+    <div class="logo">Corner</div>
     <v-btn
       v-for="item in navList"
       :id="item.text"
@@ -62,13 +62,14 @@ export default {
 .header-container {
   height: 10vh;
   display: flex;
+  font-family: consolas;
   justify-content: flex-end;
   align-items: center;
   .logo {
     color: white;
     padding-left: 20px;
     user-select: none;
-    font-size: 25px;
+    font-size: 30px;
     flex-grow: 1;
     position: relative;
     transition: all 0.3s ease;

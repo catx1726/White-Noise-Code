@@ -6,7 +6,8 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: 'Corner',
+    titleTemplate: '%s - Corner',
+    // title: 'Corner',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

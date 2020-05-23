@@ -13,9 +13,10 @@ export default {
 
   components: {},
   data() {
-    return {}
+    return {
+      title: 'About'
+    }
   },
-
   computed: {},
 
   watch: {},
@@ -26,7 +27,12 @@ export default {
 
   created() {},
 
-  methods: {}
+  methods: {},
+  head() {
+    return {
+      title: this.title
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

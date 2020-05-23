@@ -8,7 +8,9 @@
       <img src="/White-Site/imgs/taxi-rain.jpg" alt="" />
     </div>
     <MyHeader />
-    <Nuxt class="content-container" />
+    <transition name="content">
+      <Nuxt class="content-container" />
+    </transition>
   </v-app>
 </template>
 
@@ -59,5 +61,15 @@ export default {
   // OK 修复留白BUG
   top: -9999px;
   z-index: -100;
+}
+
+// content page transition
+.content-enter-active,
+.content-leave-active {
+  transition: opacity 0.3s ease;
+}
+.content-enter, .content-leave-to
+/* .component-fade-leave-active for below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

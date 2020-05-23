@@ -13,7 +13,14 @@ export default {
     SourceList
   },
   data() {
-    return {}
+    return {
+      title: 'Home'
+    }
+  },
+  head() {
+    return {
+      title: this.title
+    }
   }
 }
 </script>
