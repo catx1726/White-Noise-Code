@@ -19,7 +19,7 @@
     </div>
 
     <transition name="times">
-      <v-chip-group v-show="timeShow" column active-class="primary--text" class="times">
+      <v-chip-group v-show="timeShow && isIdx" column active-class="primary--text" class="times">
         <v-chip v-for="(time, idx) in times" :key="time" @click="chooseTime(time, idx)">
           {{ time }}min
         </v-chip>
