@@ -1,9 +1,19 @@
 <template>
   <div class="about-container">
-    各种素材仅用于学习，灵感来自:
-    <a href="http://rainyscope.com/#slide-2">rainyscope.com</a>
-    |XD
-    <a href="https://github.com/catx1726/White-Noise">GitHub</a>
+    <ul>
+      <li>
+        代码托管：
+        <a href="https://github.com/catx1726/White-Noise">gitHub.com</a>
+      </li>
+      <li>
+        音频来源：
+        <a href="https://freesound.org/">freesound.org</a>
+      </li>
+      <li>
+        参考网站：
+        <a href="http://rainyscope.com/#slide-2">rainyscope.com</a>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -44,5 +54,8 @@ export default {
   font-size: 30px;
   background-size: contain;
   background-position: center;
+  li {
+    list-style: none;
+  }
 }
 </style>
