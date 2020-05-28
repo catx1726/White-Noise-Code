@@ -146,7 +146,8 @@ export default {
       // OK 拿什么去找该节点 querySelector("audio[src='...']");
       const sourceContainer = this.DOC.querySelector('.your-list-container')
       const delAudio = this.DOC.querySelector(`audio[src='${src}']`)
-      // console.log('检测当前删除 audio 的 name 节点:', delAudio.previousSibling)
+      console.log('1111', delAudio)
+      console.log('检测当前删除 audio 的 name 节点:', delAudio.previousSibling)
       const idx = this.audios.indexOf(musicName)
       sourceContainer.removeChild(delAudio.previousSibling)
       sourceContainer.removeChild(delAudio)

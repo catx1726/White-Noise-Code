@@ -37,6 +37,8 @@ export default {
   data() {
     return {
       DOC: {},
+      timer: '',
+      timer1: 0,
       ui: true,
       isIdx: false, // 确定是否在首页，如果不在则隐藏时间相关的UI
       navList: [],
@@ -81,10 +83,30 @@ export default {
       // 重复选择同一个代表取消定时 -=- choseTime.length === 0
       this.choseTime = this.choseTime === time ? '' : time
       if (this.chooseLock) {
+        clearTimeout(this.timer)
+        this.timer = setInterval(this.time1, 1000)
+      } else {
+        this.timer = setInterval(this.time1, 1000)
         this.chooseLock = !this.chooseLock
-        return
       }
+    },
+    time1() {
+      console.log(this.choseTime)
+      if (this.choseTime > 0) {
+        this.choseTime--
+      } else {
+        this.st()
+      }
+    },
+    st() {
+      this.DOC = document
+      const asd = this.DOC.querySelectorAll(`audio`)
+      asd.forEach((item) => {
+        item.pause()
+      })
+      console.log('所有节点', asd)
       this.chooseLock = !this.chooseLock
+      clearTimeout(this.timer)
     },
     showUI() {
       const container = this.DOC.querySelector('.content-container')
