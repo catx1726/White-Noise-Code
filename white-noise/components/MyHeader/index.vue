@@ -132,7 +132,7 @@ export default {
       return str
     },
     // 当定时器到了时间就寻找所以正在播放的标签然后发起暂停命令
-    st() {
+    stop() {
       this.DOC = document
       const asd = this.DOC.querySelectorAll(`audio`)
       asd.forEach((item) => {
