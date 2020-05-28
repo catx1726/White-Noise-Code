@@ -12,7 +12,7 @@
       {{ item.text }}
     </v-btn>
     <div v-show="isIdx" class="clock">
-      <span id="chose-time" class="chose-time">{{ choseTime }}</span>
+      <span id="chose-time" class="chose-time">{{ timE }}</span>
       <v-btn text color="white" @click="timeShow = !timeShow">
         <v-icon>mdi-clock</v-icon>
       </v-btn>
@@ -44,8 +44,10 @@ export default {
       navList: [],
       timeShow: false,
       times: ['15', '30', '45', '60'],
+      timE: '',
       choseTime: '', // 用户选了时间之后，保存在该容器，然后定时器更新该容器
-      chooseLock: false
+      chooseLock: false,
+      state: ''
     }
   },
 
@@ -63,6 +65,10 @@ export default {
   },
 
   beforeMount() {},
+  destroyed() {
+    // 在组件销毁时取消定时器
+    clearTimeout(this.timer)
+  },
 
   mounted() {
     this.DOC = document
@@ -81,23 +87,45 @@ export default {
       // TODO 在此将时间转换成 秒 然后赋给 choseTime
       console.log('choose time :', time, idx)
       // 重复选择同一个代表取消定时 -=- choseTime.length === 0
-      this.choseTime = this.choseTime === time ? '' : time
-      if (this.chooseLock) {
+      this.choseTime = this.choseTime === time ? '' : time * 60
+      if (this.state === time) {
+        this.timE = ''
         clearTimeout(this.timer)
+        console.log('点击相同的时间')
+        this.state = ''
+      } else if (this.chooseLock) {
+        clearTimeout(this.timer)
+        this.state = time
         this.timer = setInterval(this.time1, 1000)
       } else {
         this.timer = setInterval(this.time1, 1000)
+        this.state = time
         this.chooseLock = !this.chooseLock
       }
     },
     time1() {
-      console.log(this.choseTime)
       if (this.choseTime > 0) {
+        const h = this.leftpad(Math.floor(this.choseTime / 3600), 2, 0)
+        const m = this.leftpad(Math.floor((this.choseTime / 60) % 60), 2, 0)
+        const s = this.leftpad(Math.floor(this.choseTime % 60), 2, 0)
+        this.timE = h + `:` + m + `:` + s
         this.choseTime--
       } else {
         this.st()
       }
     },
+    // 第一个参数需要补齐的字符第二个补齐几个第三个参数用什么补齐
+    leftpad(str, len, ch) {
+      str = String(str)
+      let i = -1
+      if (!ch && ch !== 0) ch = ' '
+      len = len - str.length
+      while (++i < len) {
+        str = ch + str
+      }
+      return str
+    },
+    // 当定时器到了时间就寻找所以正在播放的标签然后发起暂停命令
     st() {
       this.DOC = document
       const asd = this.DOC.querySelectorAll(`audio`)
