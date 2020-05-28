@@ -94,21 +94,27 @@ export default {
         console.log('点击相同的时间')
         this.state = ''
       } else if (this.chooseLock) {
+        this.count()
         clearTimeout(this.timer)
         this.state = time
         this.timer = setInterval(this.time1, 1000)
       } else {
+        this.count()
         this.timer = setInterval(this.time1, 1000)
         this.state = time
         this.chooseLock = !this.chooseLock
       }
     },
+    // 计算时间
+    count() {
+      const h = this.leftpad(Math.floor(this.choseTime / 3600), 2, 0)
+      const m = this.leftpad(Math.floor((this.choseTime / 60) % 60), 2, 0)
+      const s = this.leftpad(Math.floor(this.choseTime % 60), 2, 0)
+      this.timE = h + `:` + m + `:` + s
+    },
     time1() {
       if (this.choseTime > 0) {
-        const h = this.leftpad(Math.floor(this.choseTime / 3600), 2, 0)
-        const m = this.leftpad(Math.floor((this.choseTime / 60) % 60), 2, 0)
-        const s = this.leftpad(Math.floor(this.choseTime % 60), 2, 0)
-        this.timE = h + `:` + m + `:` + s
+        this.count()
         this.choseTime--
       } else {
         this.st()
