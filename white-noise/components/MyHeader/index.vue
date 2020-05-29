@@ -113,11 +113,11 @@ export default {
       this.timE = h + `:` + m + `:` + s
     },
     time1() {
-      if (this.choseTime > 0) {
+      if (this.choseTime >= 0) {
         this.count()
         this.choseTime--
       } else {
-        this.st()
+        this.stop()
       }
     },
     // 第一个参数需要补齐的字符第二个补齐几个第三个参数用什么补齐
