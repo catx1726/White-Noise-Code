@@ -77,20 +77,18 @@ export default {
           tag: 'classic',
           img: 'window.jpg',
           source: [
+            '高志坚,小平 - 殉',
+            'Brooklyn Duo - La la Land',
             'Aage Kvalbein - Romanza (Trad)',
             'Arcade Fire - Song On The Beach',
-            'MayPiano - 钢琴《在法国的十三天》13 jours en France ／ Piano Solo（翻自 Francis Lai）',
-            '高志坚,小平 - 殉'
+            'Motohiko Hirami - Prelude (Motohiko Hirami & Yann)',
+            'MayPiano - 钢琴《在法国的十三天》13 jours en France ／ Piano Solo（翻自 Francis Lai）'
           ]
         },
         {
           tag: 'jazzhiphop',
           img: 'taxi-rain.jpg',
-          source: [
-            'a l e x - Stop Messin Me Up When Im Tryna Summon Bahamut',
-            'elijah who - hideaway',
-            'Joe Bae - studybreak'
-          ]
+          source: ['crwsox - mall rats', 'elijah who - hideaway', 'eel. - i m sorry i really am']
         }
       ]
     }
@@ -146,8 +144,6 @@ export default {
       // OK 拿什么去找该节点 querySelector("audio[src='...']");
       const sourceContainer = this.DOC.querySelector('.your-list-container')
       const delAudio = this.DOC.querySelector(`audio[src='${src}']`)
-      console.log('1111', delAudio)
-      console.log('检测当前删除 audio 的 name 节点:', delAudio.previousSibling)
       const idx = this.audios.indexOf(musicName)
       sourceContainer.removeChild(delAudio.previousSibling)
       sourceContainer.removeChild(delAudio)
@@ -160,14 +156,11 @@ export default {
         return
       }
       this.createAudioEle(src, musicName)
-      console.log(tag, musicName)
     },
     toggle(idx) {
-      // console.log('before onboarding:', this.onboarding, 'idx:', idx)
       this.onboarding = idx
       this.listLock = idx !== this.sourceList.length - 1
       this.$store.dispatch('container/changeBgImg', this.sourceList[this.onboarding].img)
-      // console.log('after onboarding:', this.onboarding)
     }
   }
 }

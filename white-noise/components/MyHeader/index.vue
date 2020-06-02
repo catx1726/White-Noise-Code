@@ -43,7 +43,7 @@ export default {
       isIdx: false, // 确定是否在首页，如果不在则隐藏时间相关的UI
       navList: [],
       timeShow: false,
-      times: ['1', '30', '45', '60'],
+      times: ['15', '30', '45', '60'],
       timE: '',
       choseTime: '', // 用户选了时间之后，保存在该容器，然后定时器更新该容器
       chooseLock: false,
@@ -55,7 +55,6 @@ export default {
 
   watch: {
     $route() {
-      console.log(this.$route.name)
       if (this.$route.name === 'index') {
         this.isIdx = true
         return
@@ -85,13 +84,11 @@ export default {
   methods: {
     chooseTime(time, idx) {
       // TODO 在此将时间转换成 秒 然后赋给 choseTime
-      console.log('choose time :', time, idx)
       // 重复选择同一个代表取消定时 -=- choseTime.length === 0
       this.choseTime = this.choseTime === time ? '' : time * 60
       if (this.state === time) {
         this.timE = ''
         clearTimeout(this.timer)
-        console.log('点击相同的时间')
         this.state = ''
       } else if (this.chooseLock) {
         this.count()
@@ -138,7 +135,6 @@ export default {
       asd.forEach((item) => {
         item.pause()
       })
-      console.log('所有节点', asd)
       this.chooseLock = !this.chooseLock
       clearTimeout(this.timer)
     },
