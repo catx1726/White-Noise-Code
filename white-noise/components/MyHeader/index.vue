@@ -114,6 +114,7 @@ export default {
         this.count()
         this.choseTime--
       } else {
+        this.timE = '定时结束~'
         this.stop()
       }
     },
@@ -183,9 +184,11 @@ export default {
   .chose-time {
     color: white;
     // right: 20%;
+    width: 150px;
     font-size: 26px;
     line-height: 26px;
     right: 100px;
+    transition: all 0.3s ease;
   }
 }
 // content page transition
