@@ -114,7 +114,7 @@ export default {
         this.count()
         this.choseTime--
       } else {
-        this.timE = '定时结束~'
+        this.timE = ' End '
         this.stop()
       }
     },
