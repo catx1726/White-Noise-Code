@@ -49,17 +49,17 @@ export default {
           tag: 'bird',
           img: 'window-831251_1920.jpg',
           source: [
-            'jmiddlesworth__bird-call-in-spring',
+            'straget__cranes-3',
             'inspectorj__bird-whistling-a',
-            'straget__cranes-3'
+            'jmiddlesworth__bird-call-in-spring'
           ]
         },
         {
           tag: 'lake',
           img: 'water.jpg',
           source: [
-            'sanus-excipio__lake-harsha-pier-steve-bayer',
             'pflanigan__lake-biwa',
+            'sanus-excipio__lake-harsha-pier-steve-bayer',
             'psnflute1984__shore-of-a-lake-with-bird-chirping'
           ]
         },
@@ -67,10 +67,10 @@ export default {
           tag: 'rain',
           img: 'fire-warm.jpg',
           source: [
+            'blimp66__rain-storm',
             'light-rain-on-umbrella',
             'wyronroberth__rain-random',
-            'bastipictures__distant-rain',
-            'blimp66__rain-storm'
+            'bastipictures__distant-rain'
           ]
         },
         {
