@@ -105,7 +105,7 @@ export default {
     // base: 'White-Noise/site-dist/'
     // base: '/'
     // base: '../../'
-    base: '/White-Site/'
+    base: '/White-Noise-Site/'
     // base:'/'
   }
 }

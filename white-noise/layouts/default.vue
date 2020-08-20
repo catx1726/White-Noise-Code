@@ -1,11 +1,11 @@
 <template>
   <v-app :style="'background-image: url(' + './imgs/' + bgImg + ')'" class="app-container">
     <div class="img-preload">
-      <img src="/White-Site/imgs/fire-warm.jpg" alt="" />
-      <img src="/White-Site/imgs/window.jpg" alt="" />
-      <img src="/White-Site/imgs/water.jpg" alt="" />
-      <img src="/White-Site/imgs/window-831251_1920.jpg" alt="" />
-      <img src="/White-Site/imgs/taxi-rain.jpg" alt="" />
+      <img src="/White-Noise-Site/imgs/fire-warm.jpg" alt="" />
+      <img src="/White-Noise-Site/imgs/window.jpg" alt="" />
+      <img src="/White-Noise-Site/imgs/water.jpg" alt="" />
+      <img src="/White-Noise-Site/imgs/window-831251_1920.jpg" alt="" />
+      <img src="/White-Noise-Site/imgs/taxi-rain.jpg" alt="" />
     </div>
     <MyHeader />
     <transition name="content">
