@@ -27,7 +27,9 @@ export default {
 
 <style lang="scss" scoped>
 .index-container {
-  height: 100vh;
+  min-height: 80vh;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

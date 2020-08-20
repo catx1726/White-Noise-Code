@@ -45,7 +45,7 @@ export default {
   background-attachment: fixed;
 }
 .content-container {
-  height: 80vh;
+  min-height: 50vh;
   // OK 修复瞬间字体超大BUG
   // font-size: 100px;
   display: flex;

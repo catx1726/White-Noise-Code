@@ -6,7 +6,6 @@
           <v-btn
             text
             color="white"
-            large
             style="font-size:32px"
             :input-value="active"
             @click="toggle(idx)"
@@ -168,9 +167,13 @@ export default {
 <style lang="scss" scoped>
 .source-container {
   width: 50vw;
+  @media screen and(max-width: 960px) {
+    width: 70vw;
+  }
   @media screen and(max-width: 600px) {
     width: 90vw;
   }
+
   transition: all 0.3s ease;
   .tab-container {
     display: flex;
@@ -180,7 +183,7 @@ export default {
     margin-bottom: 20px;
     border-bottom: 1px solid white;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center;
   }
   .source-item-container {
     display: flex;

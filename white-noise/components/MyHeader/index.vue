@@ -171,23 +171,27 @@ export default {
     position: relative;
     transition: all 0.3s ease;
   }
-  .clock,
-  .times,
-  .chose-time {
-    position: absolute;
-    top: 10%;
+  .clock {
+    position: relative;
     transition: all 0.3s ease;
   }
+  .times,
+  .chose-time {
+    z-index: 999;
+    position: absolute;
+  }
   .times {
-    top: 15%;
+    top: 10vh;
   }
   .chose-time {
     color: white;
     // right: 20%;
+    text-align: center;
+    top: 5vh;
+    right: 0px;
     width: 150px;
     font-size: 26px;
     line-height: 26px;
-    right: 100px;
     transition: all 0.3s ease;
   }
 }
