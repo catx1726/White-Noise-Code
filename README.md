@@ -2,7 +2,8 @@
 
 ## Header
 
-> ![img](https://github.com/catx1726/White-Noise/blob/master/source-imgs/2020-05-09_10-19.png)
+> -   [用用看吧 ☺](https://www.adba.club/White-Noise-Site/)
+> -   ![img](https://github.com/catx1726/White-Noise/blob/master/source-imgs/2020-05-09_10-19.png)
 
 ## Main
 
@@ -32,4 +33,4 @@
 
 ## Footer
 
-> 仅供学习，如有侵权，秒速删除
+> 仅用于学习，如有侵权，秒速删除
