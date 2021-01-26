@@ -17,7 +17,7 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/White-Site/favicon.svg' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/White-Noise-Site/favicon.svg' }]
   },
 
   /*
@@ -34,7 +34,7 @@ export default {
    Mixin css
   */
   styleResources: {
-    scss: './assets/scss/mixin.scss'
+    scss: './assets/scss/utils/mixin.scss'
   },
 
   /*

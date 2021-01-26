@@ -19,7 +19,7 @@
     <v-window v-model="onboarding" class="source-item-container">
       <v-window-item v-for="n in sourceList" :key="`card-${n.tag}`">
         <v-chip-group v-for="(item, idx) in n.source" :key="idx" multiple>
-          <v-chip label filter outlined light text-color="white" @click="playMusic(n.tag, item)">
+          <v-chip label filter outlined light text-color="white" @click="onPlayMusic(n.tag, item)">
             {{ item }}
           </v-chip>
         </v-chip-group>
@@ -46,7 +46,7 @@ export default {
       sourceList: [
         {
           tag: 'bird',
-          img: 'window-831251_1920.jpg',
+          img: 'https://s3.ax1x.com/2021/01/26/sjvAL4.jpg',
           source: [
             'straget__cranes-3',
             'inspectorj__bird-whistling-a',
@@ -55,7 +55,7 @@ export default {
         },
         {
           tag: 'lake',
-          img: 'water.jpg',
+          img: 'https://s3.ax1x.com/2021/01/26/sjjzon.jpg',
           source: [
             'pflanigan__lake-biwa',
             'sanus-excipio__lake-harsha-pier-steve-bayer',
@@ -64,7 +64,7 @@ export default {
         },
         {
           tag: 'rain',
-          img: 'fire-warm.jpg',
+          img: 'https://s3.ax1x.com/2021/01/26/sjvpiq.jpg',
           source: [
             'blimp66__rain-storm',
             'light-rain-on-umbrella',
@@ -73,8 +73,8 @@ export default {
           ]
         },
         {
-          tag: 'classic',
-          img: 'window.jpg',
+          tag: 'classical',
+          img: 'https://s3.ax1x.com/2021/01/26/sjvFQU.jpg',
           source: [
             '高志坚,小平 - 殉',
             'Brooklyn Duo - La la Land',
@@ -86,7 +86,7 @@ export default {
         },
         {
           tag: 'jazzhiphop',
-          img: 'taxi-rain.jpg',
+          img: 'https://s3.ax1x.com/2021/01/26/sjvCWV.jpg',
           source: ['crwsox - mall rats', 'elijah who - hideaway', 'eel. - i m sorry i really am']
         }
       ]
@@ -116,13 +116,13 @@ export default {
   */
 
   methods: {
-    appendYourList() {
+    handleAppendYourList() {
       // 在 sourceList 数组的最后一个对象的 source 数组 中
       const lastIdx = this.sourceList.length - 1
       this.sourceList[lastIdx].source.push(this.audios)
       console.log('check yourList:', this.sourceList[lastIdx].source)
     },
-    createAudioEle(src, musicName) {
+    handleCreateAudioEle(src, musicName) {
       const sourceContainer = this.DOC.querySelector('.your-list-container')
       const titleEle = this.DOC.createElement('span')
       titleEle.innerHTML = musicName + ' '
@@ -139,7 +139,7 @@ export default {
       sourceContainer.appendChild(fragment)
       this.audios.push(musicName)
     },
-    deleteAudioEle(src, musicName) {
+    handleDeleteAudioEle(src, musicName) {
       // OK 拿什么去找该节点 querySelector("audio[src='...']");
       const sourceContainer = this.DOC.querySelector('.your-list-container')
       const delAudio = this.DOC.querySelector(`audio[src='${src}']`)
@@ -148,13 +148,13 @@ export default {
       sourceContainer.removeChild(delAudio)
       this.audios.splice(idx, 1)
     },
-    playMusic(tag, musicName) {
+    onPlayMusic(tag, musicName) {
       const src = './music/' + tag + '/' + musicName + '.wav'
       if (this.audios.includes(musicName)) {
-        this.deleteAudioEle(src, musicName)
+        this.handleDeleteAudioEle(src, musicName)
         return
       }
-      this.createAudioEle(src, musicName)
+      this.handleCreateAudioEle(src, musicName)
     },
     toggle(idx) {
       this.onboarding = idx

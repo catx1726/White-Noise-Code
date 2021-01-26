@@ -1,5 +1,5 @@
 export const state = () => ({
-  bgImg: 'window.jpg'
+  bgImg: 'https://s3.ax1x.com/2021/01/26/sjvAL4.jpg'
 })
 
 export const getters = {

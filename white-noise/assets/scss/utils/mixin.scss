@@ -1,0 +1,4 @@
+@import './mixin_custom_scroll.scss';
+html {
+  @include scrollbars(3px, slategray);
+}

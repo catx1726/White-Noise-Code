@@ -33,6 +33,7 @@ export default {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+
   // background-image: url('/imgs/window-831251_1920.jpg');
   .test-nonblur {
     z-index: 1;

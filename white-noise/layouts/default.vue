@@ -1,11 +1,7 @@
 <template>
-  <v-app :style="'background-image: url(' + './imgs/' + bgImg + ')'" class="app-container">
+  <v-app :style="`background-image:url(${bgImg})`" class="app-container">
     <div class="img-preload">
-      <img src="/White-Noise-Site/imgs/fire-warm.jpg" alt="" />
-      <img src="/White-Noise-Site/imgs/window.jpg" alt="" />
-      <img src="/White-Noise-Site/imgs/water.jpg" alt="" />
-      <img src="/White-Noise-Site/imgs/window-831251_1920.jpg" alt="" />
-      <img src="/White-Noise-Site/imgs/taxi-rain.jpg" alt="" />
+      <img v-for="i of imgList" :key="i.name" :src="i.path" lazy />
     </div>
     <MyHeader />
     <transition name="content">
@@ -23,7 +19,15 @@ export default {
     MyHeader
   },
   data() {
-    return {}
+    return {
+      imgList: [
+        { path: 'https://s3.ax1x.com/2021/01/26/sjvAL4.jpg', name: 'outside-window' },
+        { path: 'https://s3.ax1x.com/2021/01/26/sjvFQU.jpg', name: 'inner-window' },
+        { path: 'https://s3.ax1x.com/2021/01/26/sjvCWV.jpg', name: 'taxi-rain' },
+        { path: 'https://s3.ax1x.com/2021/01/26/sjvpiq.jpg', name: 'fire-warm' },
+        { path: 'https://s3.ax1x.com/2021/01/26/sjjzon.jpg', name: 'lake' }
+      ]
+    }
   },
   computed: mapState({
     bgImg: (state) => state.container.bgImg
@@ -48,11 +52,11 @@ export default {
   min-height: 50vh;
   // OK 修复瞬间字体超大BUG
   // font-size: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-transform: uppercase;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
   transition: all 0.3s ease;
 }
 .img-preload {
@@ -73,3 +77,4 @@ export default {
   opacity: 0;
 }
 </style>
+<style lang="scss"></style>
