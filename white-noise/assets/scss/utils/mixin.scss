@@ -1,4 +1,5 @@
 @import './mixin_custom_scroll.scss';
+@import './flex_layout.scss';
 html {
   @include scrollbars(3px, slategray);
 }

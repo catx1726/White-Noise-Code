@@ -76,12 +76,12 @@ export default {
           tag: 'classical',
           img: 'https://s3.ax1x.com/2021/01/26/sjvFQU.jpg',
           source: [
-            '高志坚,小平 - 殉',
+            'Iver Kleive,Aage Kvalbein - O bli hos meg',
+            'Michael Dulin - Waltz, for piano (after Chopin)',
+            'Aage Kvalbein - Méditation Fra Thaïs',
             'Brooklyn Duo - La la Land',
-            'Aage Kvalbein - Romanza (Trad)',
             'Arcade Fire - Song On The Beach',
-            'Motohiko Hirami - Prelude (Motohiko Hirami & Yann)',
-            'MayPiano - 钢琴《在法国的十三天》13 jours en France ／ Piano Solo（翻自 Francis Lai）'
+            'Motohiko Hirami - Prelude (Motohiko Hirami & Yann)'
           ]
         },
         {

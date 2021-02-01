@@ -1,0 +1,49 @@
+$flex-dirs: (
+  'col': column,
+  'row': row
+);
+
+$flex-jc: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around
+);
+
+$flex-an: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  stretch: stretch
+);
+
+$flex-wp: warp, nowrap;
+
+.m-flex {
+  display: flex;
+}
+
+@each $val in $flex-wp {
+  .flex-#{$val} {
+    flex-wrap: $val;
+  }
+}
+
+@each $name, $val in $flex-an {
+  .flex-an-#{$name} {
+    align-items: $val;
+  }
+}
+
+@each $name, $val in $flex-jc {
+  .flex-jc-#{$name} {
+    justify-content: $val;
+  }
+}
+
+@each $name, $val in $flex-dirs {
+  .flex-dir-#{$name} {
+    flex-direction: $val;
+  }
+}

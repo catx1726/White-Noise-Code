@@ -1,9 +1,19 @@
 <template>
-  <v-app :style="`background-image:url(${bgImg})`" class="app-container">
+  <v-app class="app-container">
     <div class="img-preload">
-      <img v-for="i of imgList" :key="i.name" :src="i.path" lazy />
+      <div class="show-box">
+        <div class="slide-box m-flex">
+          <div
+            v-for="i of imgList"
+            :key="i.name"
+            class="img-item"
+            :style="`background-image:url(${i.path})`"
+          ></div>
+        </div>
+      </div>
+      <img />
     </div>
-    <MyHeader />
+    <MyHeader class="header" />
     <transition name="content">
       <Nuxt class="content-container" />
     </transition>
@@ -13,6 +23,7 @@
 <script>
 import { mapState } from 'vuex'
 import MyHeader from '~/components/MyHeader'
+const DOC = document
 
 export default {
   components: {
@@ -20,6 +31,7 @@ export default {
   },
   data() {
     return {
+      // TODO 可优化
       imgList: [
         { path: 'https://s3.ax1x.com/2021/01/26/sjvAL4.jpg', name: 'outside-window' },
         { path: 'https://s3.ax1x.com/2021/01/26/sjvFQU.jpg', name: 'inner-window' },
@@ -34,11 +46,21 @@ export default {
   }),
   watch: {
     bgImg(val) {
-      return val
+      this.onUserChangeSourceTag(val)
     }
   },
   created() {},
-  methods: {}
+  methods: {
+    onUserChangeSourceTag(val) {
+      const idx = this.handleFindUrlIndex(val)
+      const slideBox = DOC.querySelector('.slide-box')
+      slideBox.style.transform = `translate(-${idx * 100}vw)`
+      // console.log('onUserChangeSourceTag val:', val, idx)
+    },
+    handleFindUrlIndex(val) {
+      return this.imgList.findIndex((i) => i.path === val)
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -47,6 +69,9 @@ export default {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  // TODO 可优化
+  // background-image: url('https://s3.ax1x.com/2021/01/26/sjvAL4.jpg');
+  --base-index: 10;
 }
 .content-container {
   min-height: 50vh;
@@ -59,12 +84,30 @@ export default {
   text-transform: uppercase;
   transition: all 0.3s ease;
 }
-.img-preload {
+.header,
+.content-container {
+  z-index: calc(var(--base-index) * 2);
+}
+
+.img-preload,
+.show-box,
+.img-item,
+.slide-box {
+  width: 100vw;
+  min-height: 110vh;
+  overflow: hidden;
   position: absolute;
-  left: -9999px;
-  // OK 修复留白BUG
-  top: -9999px;
-  z-index: -100;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: var(--base-index);
+  transition: all 0.3s ease;
+}
+.img-item {
+  position: relative;
+}
+.slide-box {
+  width: auto;
 }
 
 // content page transition
