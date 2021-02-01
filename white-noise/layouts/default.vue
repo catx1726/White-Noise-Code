@@ -1,6 +1,6 @@
 <template>
   <v-app class="app-container">
-    <div class="img-preload">
+    <div class="img-preload" client-only>
       <div class="show-box">
         <div class="slide-box m-flex">
           <div
@@ -52,7 +52,7 @@ export default {
   methods: {
     onUserChangeSourceTag(val) {
       const idx = this.handleFindUrlIndex(val)
-      const slideBox = document.querySelector('.slide-box')
+      const slideBox = this.DOC.querySelector('.slide-box')
       slideBox.style.transform = `translate(-${idx * 100}vw)`
       // console.log('onUserChangeSourceTag val:', val, idx)
     },
