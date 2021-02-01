@@ -23,7 +23,6 @@
 <script>
 import { mapState } from 'vuex'
 import MyHeader from '~/components/MyHeader'
-const DOC = document
 
 export default {
   components: {
@@ -53,7 +52,7 @@ export default {
   methods: {
     onUserChangeSourceTag(val) {
       const idx = this.handleFindUrlIndex(val)
-      const slideBox = DOC.querySelector('.slide-box')
+      const slideBox = document.querySelector('.slide-box')
       slideBox.style.transform = `translate(-${idx * 100}vw)`
       // console.log('onUserChangeSourceTag val:', val, idx)
     },
