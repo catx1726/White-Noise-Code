@@ -1,5 +1,5 @@
 // import axios from 'axios'
-import { getToken, setToken, removeToken } from '@/utils/auth'
+import { getToken, setToken, removeToken } from '@/utils/permission/auth'
 
 export const state = () => ({
   token: getToken(),

@@ -14,6 +14,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
+    "@types/jsdom": "^16.2.6",
     "js-cookie": "^2.2.1",
     "nuxt": "^2.0.0"
   },

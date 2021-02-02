@@ -1,6 +1,10 @@
 <template>
   <v-app class="app-container">
-    <div class="img-preload" client-only>
+    <!-- TODO 可优化 -->
+    <div class="loader m-flex flex-jc-center flex-an-center" style="bottom:30vh">
+      <span class="outcubic"></span>
+    </div>
+    <div class="img-preload">
       <div class="show-box">
         <div class="slide-box m-flex">
           <div
@@ -11,7 +15,6 @@
           ></div>
         </div>
       </div>
-      <img />
     </div>
     <MyHeader class="header" />
     <transition name="content">
@@ -23,6 +26,9 @@
 <script>
 import { mapState } from 'vuex'
 import MyHeader from '~/components/MyHeader'
+import { handleImgLoaded } from '~/utils/dom/img'
+
+const CONSOLE_TAG = 'layou default.vue'
 
 export default {
   components: {
@@ -31,12 +37,13 @@ export default {
   data() {
     return {
       // TODO 可优化
+      DOC: null,
       imgList: [
-        { path: 'https://s3.ax1x.com/2021/01/26/sjvAL4.jpg', name: 'outside-window' },
-        { path: 'https://s3.ax1x.com/2021/01/26/sjvFQU.jpg', name: 'inner-window' },
-        { path: 'https://s3.ax1x.com/2021/01/26/sjvCWV.jpg', name: 'taxi-rain' },
-        { path: 'https://s3.ax1x.com/2021/01/26/sjvpiq.jpg', name: 'fire-warm' },
-        { path: 'https://s3.ax1x.com/2021/01/26/sjjzon.jpg', name: 'lake' }
+        { path: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0ca.jpg', name: 'outside-window' },
+        { path: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0c3.jpg', name: 'inner-window' },
+        { path: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0b7.jpg', name: 'taxi-rain' },
+        { path: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0b3.jpg', name: 'fire-warm' },
+        { path: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0bb.jpg', name: 'lake' }
       ]
     }
   },
@@ -44,18 +51,39 @@ export default {
     bgImg: (state) => state.container.bgImg
   }),
   watch: {
-    bgImg(val) {
-      this.onUserChangeSourceTag(val)
+    bgImg: {
+      immediate: false,
+      handler(val) {
+        this.onUserChangeSourceTag(val)
+      }
     }
   },
   created() {},
+  mounted() {
+    this.DOC = document
+    this.handleImageLoader()
+  },
   methods: {
     onUserChangeSourceTag(val) {
       const idx = this.handleFindUrlIndex(val)
       const slideBox = this.DOC.querySelector('.slide-box')
       slideBox.style.transform = `translate(-${idx * 100}vw)`
-      // console.log('onUserChangeSourceTag val:', val, idx)
     },
+    /* 监听图片是否加载完毕 */
+    handleImageLoader() {
+      const pureUrlList = this.imgList.map((item) => item.path)
+      const promiseList = handleImgLoaded(pureUrlList)
+
+      Promise.all(promiseList).then(() => {
+        this.handlePerloaderState()
+        console.log(`${CONSOLE_TAG} handleImageLoader:`, pureUrlList, promiseList)
+      })
+    },
+    handlePerloaderState() {
+      const preloaderDOM = this.DOC.querySelector('.loader')
+      preloaderDOM.classList.add('remove')
+    },
+    /* 拿到图片的下标 */
     handleFindUrlIndex(val) {
       return this.imgList.findIndex((i) => i.path === val)
     }
@@ -95,7 +123,7 @@ export default {
   width: 100vw;
   min-height: 110vh;
   overflow: hidden;
-  position: absolute;
+  position: fixed;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -119,4 +147,3 @@ export default {
   opacity: 0;
 }
 </style>
-<style lang="scss"></style>

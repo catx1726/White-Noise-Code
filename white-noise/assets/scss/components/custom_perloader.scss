@@ -1,0 +1,52 @@
+.loader {
+  --base-w-h: 60px;
+  --base-anim-duration: 2.5s;
+
+  position: absolute;
+  font-size: 1.6rem;
+  height: 100vh;
+  width: 100%;
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+.loader .outcubic {
+  height: var(--base-w-h);
+  width: var(--base-w-h);
+  position: absolute;
+}
+.loader::before,
+.loader::after,
+.loader .outcubic {
+  content: '';
+  border: thick double white;
+  transition: all 0.3s linear;
+}
+.loader::before,
+.loader::after {
+  position: absolute;
+}
+.loader::after {
+  height: calc(var(--base-w-h) / 1.9);
+  width: calc(var(--base-w-h) / 1.9);
+  animation: mRotateOne var(--base-anim-duration) linear infinite reverse;
+}
+.loader::before {
+  height: calc(var(--base-w-h) / 5);
+  width: calc(var(--base-w-h) / 5);
+}
+.loader::before,
+.loader .outcubic {
+  animation: mRotateOne calc(var(--base-anim-duration) / 1.2) linear infinite;
+}
+@keyframes mRotateOne {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.remove {
+  transform: translateX(-100vw);
+}

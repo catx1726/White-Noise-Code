@@ -46,7 +46,7 @@ export default {
       sourceList: [
         {
           tag: 'bird',
-          img: 'https://s3.ax1x.com/2021/01/26/sjvAL4.jpg',
+          img: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0ca.jpg',
           source: [
             'straget__cranes-3',
             'inspectorj__bird-whistling-a',
@@ -55,7 +55,7 @@ export default {
         },
         {
           tag: 'lake',
-          img: 'https://s3.ax1x.com/2021/01/26/sjjzon.jpg',
+          img: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0bb.jpg',
           source: [
             'pflanigan__lake-biwa',
             'sanus-excipio__lake-harsha-pier-steve-bayer',
@@ -64,7 +64,7 @@ export default {
         },
         {
           tag: 'rain',
-          img: 'https://s3.ax1x.com/2021/01/26/sjvpiq.jpg',
+          img: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0b3.jpg',
           source: [
             'blimp66__rain-storm',
             'light-rain-on-umbrella',
@@ -74,7 +74,7 @@ export default {
         },
         {
           tag: 'classical',
-          img: 'https://s3.ax1x.com/2021/01/26/sjvFQU.jpg',
+          img: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0c3.jpg',
           source: [
             'Iver Kleive,Aage Kvalbein - O bli hos meg',
             'Michael Dulin - Waltz, for piano (after Chopin)',
@@ -86,7 +86,7 @@ export default {
         },
         {
           tag: 'jazzhiphop',
-          img: 'https://s3.ax1x.com/2021/01/26/sjvCWV.jpg',
+          img: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0b7.jpg',
           source: ['crwsox - mall rats', 'elijah who - hideaway', 'eel. - i m sorry i really am']
         }
       ]
