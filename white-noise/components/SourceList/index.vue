@@ -46,7 +46,7 @@ export default {
       sourceList: [
         {
           tag: 'bird',
-          img: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0ca.jpg',
+          img: 'https://img.imgdb.cn/item/605c8bde8322e6675cc6b609.jpg',
           source: [
             'straget__cranes-3',
             'inspectorj__bird-whistling-a',
@@ -55,7 +55,7 @@ export default {
         },
         {
           tag: 'lake',
-          img: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0bb.jpg',
+          img: 'https://img.imgdb.cn/item/605c8bde8322e6675cc6b5ff.jpg',
           source: [
             'pflanigan__lake-biwa',
             'sanus-excipio__lake-harsha-pier-steve-bayer',
@@ -64,7 +64,7 @@ export default {
         },
         {
           tag: 'rain',
-          img: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0b3.jpg',
+          img: 'https://img.imgdb.cn/item/605c8bde8322e6675cc6b5f6.jpg',
           source: [
             'blimp66__rain-storm',
             'light-rain-on-umbrella',
@@ -74,7 +74,7 @@ export default {
         },
         {
           tag: 'classical',
-          img: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0c3.jpg',
+          img: 'https://img.imgdb.cn/item/605c8bde8322e6675cc6b604.jpg',
           source: [
             'Iver Kleive,Aage Kvalbein - O bli hos meg',
             'Michael Dulin - Waltz, for piano (after Chopin)',
@@ -86,7 +86,7 @@ export default {
         },
         {
           tag: 'jazzhiphop',
-          img: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0b7.jpg',
+          img: 'https://img.imgdb.cn/item/605c8bde8322e6675cc6b5f2.jpg',
           source: ['crwsox - mall rats', 'elijah who - hideaway', 'eel. - i m sorry i really am']
         }
       ]

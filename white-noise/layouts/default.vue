@@ -39,11 +39,11 @@ export default {
       // TODO 可优化
       DOC: null,
       imgList: [
-        { path: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0ca.jpg', name: 'outside-window' },
-        { path: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0c3.jpg', name: 'inner-window' },
-        { path: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0b7.jpg', name: 'taxi-rain' },
-        { path: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0b3.jpg', name: 'fire-warm' },
-        { path: 'https://img.imgdb.cn/item/60194c2a3ffa7d37b37fc0bb.jpg', name: 'lake' }
+        { path: 'https://img.imgdb.cn/item/605c8bde8322e6675cc6b609.jpg', name: 'outside-window' },
+        { path: 'https://img.imgdb.cn/item/605c8bde8322e6675cc6b604.jpg', name: 'inner-window' },
+        { path: 'https://img.imgdb.cn/item/605c8bde8322e6675cc6b5f6.jpg', name: 'taxi-rain' },
+        { path: 'https://img.imgdb.cn/item/605c8bde8322e6675cc6b5f2.jpg', name: 'fire-warm' },
+        { path: 'https://img.imgdb.cn/item/605c8bde8322e6675cc6b5ff.jpg', name: 'lake' }
       ]
     }
   },

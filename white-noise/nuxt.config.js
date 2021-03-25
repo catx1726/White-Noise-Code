@@ -99,6 +99,35 @@ export default {
     /*
      ** You can extend webpack config here
      */
+    terser: {
+      terserOptions: {
+        compress: {
+          drop_console: true
+        }
+      }
+    },
+
+    analyze: true,
+
+    minimize: true,
+
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+        minSize: 10000,
+        maxSize: 250000
+      }
+    },
+    maxChunkSize: 30000,
+    postcss: {
+      plugins: {},
+      preset: {
+        autoprefixer: {
+          /* 参考 https://github.com/browserslist/browserslist#queries */
+          overrideBrowserslist: ['defaults', 'ie >= 9', '> 5%', 'last 2 versions']
+        }
+      }
+    },
     extend(config, ctx) {}
   },
   router: {
