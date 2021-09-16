@@ -126,7 +126,7 @@ export default {
   position: fixed;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
   z-index: var(--base-index);
   transition: all 0.3s ease;
 }

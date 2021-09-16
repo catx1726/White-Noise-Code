@@ -192,6 +192,7 @@ export default {
   .your-list-container {
     display: flex;
     z-index: 999;
+    position: relative;
     padding-top: 10px;
     margin-top: 10px;
     flex-wrap: wrap;
