@@ -200,3 +200,10 @@ export default {
   }
 }
 </style>
+<style lang="scss">
+.source-item-container {
+  .v-chip.v-chip--outlined.v-chip.v-chip {
+    border: none;
+  }
+}
+</style>

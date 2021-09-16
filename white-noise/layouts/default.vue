@@ -121,7 +121,7 @@ export default {
 .img-item,
 .slide-box {
   width: 100vw;
-  min-height: 110vh;
+  min-height: 100vh;
   overflow: hidden;
   position: fixed;
   background-size: cover;
