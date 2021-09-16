@@ -191,12 +191,13 @@ export default {
   }
   .your-list-container {
     display: flex;
-    border-top: 1px solid white;
+    z-index: 999;
     padding-top: 10px;
     margin-top: 10px;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    border-top: 1px solid white;
   }
 }
 </style>
