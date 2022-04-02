@@ -81,7 +81,7 @@ export default {
   mounted() {
     this.DOC = document
     this.handleImageLoader()
-    // this.handleCheckDomain()
+    this.handleCheckDomain()
   },
   methods: {
     handleCheckDomain() {
