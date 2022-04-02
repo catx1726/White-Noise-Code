@@ -20,11 +20,25 @@
     <transition name="content">
       <Nuxt class="content-container" />
     </transition>
+
+    <v-snackbar v-model="domainInfo.show" :timeout="0">
+      <div>
+        {{ domainInfo.text }}
+        <a :href="domainInfo.newURL" target="blank">corner.adoba.site</a>
+      </div>
+
+      <template v-slot:action="{ attrs }">
+        <v-btn color="pink" text v-bind="attrs" @click="domainInfo.show = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-app>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import { checkDomainName } from '../utils/dom/normal'
 import MyHeader from '~/components/MyHeader'
 import { handleImgLoaded } from '~/utils/dom/img'
 
@@ -44,7 +58,12 @@ export default {
         { path: 'https://img.imgdb.cn/item/605c8bde8322e6675cc6b5f6.jpg', name: 'taxi-rain' },
         { path: 'https://img.imgdb.cn/item/605c8bde8322e6675cc6b5f2.jpg', name: 'fire-warm' },
         { path: 'https://img.imgdb.cn/item/605c8bde8322e6675cc6b5ff.jpg', name: 'lake' }
-      ]
+      ],
+      domainInfo: {
+        show: true,
+        text: '非常抱歉,该域名即将过期,现已迁移到:',
+        newURL: 'https://corner.adoba.site'
+      }
     }
   },
   computed: mapState({
@@ -62,8 +81,13 @@ export default {
   mounted() {
     this.DOC = document
     this.handleImageLoader()
+    // this.handleCheckDomain()
   },
   methods: {
+    handleCheckDomain() {
+      this.domainCheckTag = checkDomainName()
+      console.log('checkDomain:', this.domainCheckTag)
+    },
     onUserChangeSourceTag(val) {
       const idx = this.handleFindUrlIndex(val)
       const slideBox = this.DOC.querySelector('.slide-box')
