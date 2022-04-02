@@ -60,7 +60,7 @@ export default {
         { path: 'https://img.imgdb.cn/item/605c8bde8322e6675cc6b5ff.jpg', name: 'lake' }
       ],
       domainInfo: {
-        show: true,
+        show: false,
         text: '非常抱歉,该域名即将过期,现已迁移到:',
         newURL: 'https://corner.adoba.site'
       }
@@ -85,7 +85,7 @@ export default {
   },
   methods: {
     handleCheckDomain() {
-      this.domainCheckTag = checkDomainName()
+      this.domainCheckTag = checkDomainName('www.adba.club')
       console.log('checkDomain:', this.domainCheckTag)
     },
     onUserChangeSourceTag(val) {
