@@ -134,7 +134,7 @@ export default {
     // base: 'White-Noise/site-dist/'
     // base: '/'
     // base: '../../'
-    base: '/White-Noise-Site/'
+    base: '/'
     // base:'/'
   }
 }

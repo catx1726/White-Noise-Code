@@ -85,8 +85,8 @@ export default {
   },
   methods: {
     handleCheckDomain() {
-      this.domainCheckTag = checkDomainName('www.adba.club')
-      console.log('checkDomain:', this.domainCheckTag)
+      this.domainInfo.show = checkDomainName('www.adba.club')
+      console.log('checkDomain:', this.domainInfo.show)
     },
     onUserChangeSourceTag(val) {
       const idx = this.handleFindUrlIndex(val)
