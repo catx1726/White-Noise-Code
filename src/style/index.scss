@@ -1,0 +1,35 @@
+/* tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap');
+
+html {
+  @apply font-mono;
+  background-color: var(--base-white-blue);
+  /* font-size: 62.5%; */
+}
+
+:root {
+  --base-gray: #c4c4c4; // 灰色
+  --base-gray-op-5: rgba(196, 196, 196, 0.5); // 灰色降低透明度 50%
+  --base-gray-op-3: rgba(196, 196, 196, 0.3); // 灰色降低透明度 30%
+  --base-black: #323232; // 黑色
+  --base-black-op-5: rgb(50, 50, 50, 0.5); // 黑色
+  --base-white: #ffffff; // 白色
+  --base-white-op-5: rgb(255, 255, 255, 0.5);
+  --base-white-blue: #f5f7f9;
+  --base-accent: #cc2728; // 点缀色
+  --base-accent-op-3: rgba(204, 39, 40, 0.3); // 点缀色透明度30%
+
+  --base-duration: 0.5s;
+  --base-opacity: 0.6;
+
+  --base-pd-md: 12px;
+  --base-h-w: 10px;
+
+  --base-header-h: 70px;
+  --base-footer-h: 150px;
+
+  --base-box-min-w: 350px;
+}

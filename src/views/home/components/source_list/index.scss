@@ -1,0 +1,27 @@
+.source-list-container {
+  width: 70%;
+  overflow-x: scroll;
+  position: relative;
+}
+
+.source-item {
+  flex-shrink: 0;
+  height: 100%;
+  padding: 50px;
+  display: block;
+  cursor: pointer;
+  position: relative;
+  box-sizing: border-box;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  .title {
+    right: 10px;
+    top: 10px;
+    writing-mode: tb;
+    position: absolute;
+  }
+}
+
+.source-item:hover {
+  background-color: var(--base-black-op-5);
+}
