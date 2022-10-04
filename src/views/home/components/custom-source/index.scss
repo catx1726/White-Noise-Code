@@ -1,0 +1,45 @@
+.custom-source-container {
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  position: fixed;
+}
+.custom-source-container .modal {
+  height: 100%;
+  width: 100%;
+  opacity: 0.9;
+  position: absolute;
+  background-color: var(--base-black);
+}
+.custom-box {
+  z-index: 10;
+  .item {
+    margin: 10px 0;
+
+    .title {
+      margin-right: 10px;
+    }
+
+    select,
+    input {
+      outline: transparent;
+      background-color: transparent;
+    }
+    input {
+      border-bottom: 1px solid white;
+    }
+  }
+}
+
+
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.3s ease;
+}
+
+.v-leave-to,
+.v-enter-from {
+  opacity: 0;
+  transform: translateX(10px);
+  background-color: transparent;
+}

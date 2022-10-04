@@ -1,7 +1,7 @@
 import { defineAsyncComponent } from 'vue'
 
-const componentsName = import.meta.globEager('../components/auto_regsiter_global_comp/*/index.vue')
-const components = import.meta.glob('../components/auto_regsiter_global_comp/*/index.vue')
+const componentsName = import.meta.globEager('../components/auto_regsiter_global_comp/*/index.vue'),
+  components = import.meta.globEager('../components/auto_regsiter_global_comp/*/index.vue')
 
 console.log('auto_regsiter_global_comp :', componentsName, components)
 

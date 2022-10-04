@@ -82,7 +82,7 @@ export const Poem = [
  * @return {*}
  */
 export function getPoem() {
-  let len = Poem.length
+  let len = Poem.length - 1
 
   return Poem[Math.floor(Math.random() * (len - 0 + 1) + 0)]
 }

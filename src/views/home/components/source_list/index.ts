@@ -1,3 +1,5 @@
+import { reactive } from 'vue'
+
 export enum AudioSourceEnum {
   Birds = 1,
   Cicada,
@@ -6,7 +8,8 @@ export enum AudioSourceEnum {
   Fire,
   Clock,
   Rain,
-  People
+  People,
+  Custom
 }
 
 export interface AudioSourceListType {
@@ -29,17 +32,46 @@ export const AudioSourceTypeList = {
   Fire: { enum: AudioSourceEnum.Fire, title: '柴火', text: '绿蚁新醅酒，红泥小火炉。' } as AudioSourceType,
   Clock: { enum: AudioSourceEnum.Clock, title: '钟声', text: '行到水穷处，坐看云起时。' } as AudioSourceType,
   Rain: { enum: AudioSourceEnum.Rain, title: '雨声', text: '空山新雨后，天气晚来秋。' } as AudioSourceType,
-  People: { enum: AudioSourceEnum.People, title: '人声', text: '知者动，仁者静。' } as AudioSourceType
+  People: { enum: AudioSourceEnum.People, title: '人声', text: '知者动，仁者静。' } as AudioSourceType,
+  Custom: { enum: AudioSourceEnum.Custom, title: '自定', text: '随意春芳歇，王孙自可留。' } as AudioSourceType
 }
 
 export const AudioSourceList = [
-  { type: AudioSourceTypeList.Birds, link: 'https://cdn.freesound.org/previews/387/387978_6221013-lq.mp3' },
-  { type: AudioSourceTypeList.Water, link: 'https://cdn.freesound.org/previews/442/442492_5902878-lq.mp3' },
-  { type: AudioSourceTypeList.Fire, link: 'https://cdn.freesound.org/previews/378/378641_7023777-lq.mp3' },
-  { type: AudioSourceTypeList.Cicada, link: 'https://cdn.freesound.org/previews/400/400331_5121236-lq.mp3' },
-  { type: AudioSourceTypeList.Breeze, link: 'https://cdn.freesound.org/previews/181/181801_3153523-lq.mp3' },
-  { type: AudioSourceTypeList.Clock, link: 'https://cdn.freesound.org/previews/530/530583_7707368-lq.mp3' },
-  { type: AudioSourceTypeList.Rain, link: 'https://cdn.freesound.org/previews/531/531947_7707368-lq.mp3' },
-  { type: AudioSourceTypeList.People, link: 'https://cdn.freesound.org/previews/625/625112_12946258-lq.mp3' },
-  { type: AudioSourceTypeList.People, link: 'https://cdn.freesound.org/previews/339/339983_5984982-lq.mp3' }
+  { type: AudioSourceTypeList.Birds, link: 'https://cdn.freesound.org/previews/387/387978_6221013-lq.mp3', text: '忻忻众鸟鸣' },
+  { type: AudioSourceTypeList.Water, link: 'https://cdn.freesound.org/previews/442/442492_5902878-lq.mp3', text: '明河共影' },
+  { type: AudioSourceTypeList.Fire, link: 'https://cdn.freesound.org/previews/378/378641_7023777-lq.mp3', text: '红泥小火炉' },
+  { type: AudioSourceTypeList.Cicada, link: 'https://cdn.freesound.org/previews/400/400331_5121236-lq.mp3', text: '蝉鸣空桑林' },
+  { type: AudioSourceTypeList.Breeze, link: 'https://cdn.freesound.org/previews/181/181801_3153523-lq.mp3', text: '为谁风露立中宵' },
+  { type: AudioSourceTypeList.Clock, link: 'https://cdn.freesound.org/previews/530/530583_7707368-lq.mp3', text: '云起时' },
+  { type: AudioSourceTypeList.Rain, link: 'https://cdn.freesound.org/previews/531/531947_7707368-lq.mp3', text: '空山新雨后' },
+  { type: AudioSourceTypeList.People, link: 'https://cdn.freesound.org/previews/625/625112_12946258-lq.mp3', text: '知者动' },
+  { type: AudioSourceTypeList.People, link: 'https://cdn.freesound.org/previews/339/339983_5984982-lq.mp3', text: '仁者静' }
 ] as Array<AudioSourceListType>
+
+export const PlayList = reactive([] as Array<AudioSourceListType>)
+
+/**
+ * @description 根据type拿到音源列表
+ * @export
+ * @param {AudioSourceType} type
+ * @return {*}
+ */
+export function getAudioSourceListByType(type: AudioSourceType) {
+  return AudioSourceList.filter((i) => i.type.enum === type.enum)
+}
+
+export function addAudioSourceToPlayList(source: AudioSourceListType) {
+  PlayList.push(source)
+  console.log('addAudioSourceToPlayList :', PlayList)
+}
+
+export function removeAudioSourceToPlayList(index: number) {
+  console.log('removeAudioSourceToPlayList :', PlayList)
+  PlayList.splice(index, 1)
+  console.log('removeAudioSourceToPlayList done:', PlayList)
+}
+
+export function addSource(source: AudioSourceListType) {
+  AudioSourceList.push(source)
+  console.log('addSource', AudioSourceList)
+}

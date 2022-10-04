@@ -1,0 +1,67 @@
+.side-menu-container {
+  right: 0;
+  width: 30%;
+  height: 100%;
+
+  position: absolute;
+}
+
+.modal {
+  left: 0;
+  top: 0;
+  width: 70%;
+  height: 70%;
+  position: fixed;
+}
+
+.side-menu-box {
+  height: 100%;
+  width: 100%;
+  padding: 50px 10px;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  transform: translateX(0);
+  background-color: var(--base-black-op-5);
+}
+
+.trigger-box {
+  padding-top: 12px;
+  padding-right: 18px;
+  width: 100%;
+  z-index: 10;
+  position: absolute;
+}
+
+.play-item {
+  width: 100%;
+  margin: 20px 0;
+  audio {
+    width: 100%;
+  }
+}
+
+.play-item:first-child {
+  margin-top: 0;
+}
+.play-item:last-child {
+  margin-bottom: 0;
+}
+
+.add-your-source-box{
+  bottom: 0;
+  right: 0;
+  padding: 10px 50px;
+  position: absolute;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.3s ease;
+}
+
+.v-leave-to,
+.v-enter-from {
+  opacity: 0;
+  transform: translateX(10px);
+  background-color: transparent;
+}
