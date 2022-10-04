@@ -34,7 +34,13 @@ export default {
 import { reactive, watch } from 'vue'
 import { PlayList, removeAudioSourceToPlayList } from '../source_list'
 
-const pgInfo = reactive({ showCustomSourceBox: false, showMenu: false, playList: PlayList })
+export interface PageConfigInterface {
+  pgInfo: { showMenu: boolean }
+}
+
+const pgInfo = reactive({ showMenu: false, playList: PlayList })
+
+defineExpose({ pgInfo })
 </script>
 
 <style scoped lang="scss">

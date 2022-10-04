@@ -1,8 +1,8 @@
 <template>
   <main class="main-container flex flex-col justify-end text-white">
-    <side-menu-comp @show-custom-box="showCustomBox" />
+    <side-menu-comp ref="sideMenuCompRef" @show-custom-box="showCustomComp" />
     <poem-comp />
-    <source-list-comp />
+    <source-list-comp @show-side-menu-box="showSideMenuComp" />
     <info-comp />
     <custom-source ref="customCompRef" @add-source-list="addSourceList" />
   </main>
@@ -15,8 +15,8 @@ export default {
 </script>
 
 <script setup lang="ts">
-import CustomSource, { type PageConfigInterface } from './components/custom-source/index.vue'
-import SideMenuComp from './components/side_menu/index.vue'
+import CustomSource, { type PageConfigInterface as CustomSourceConfig } from './components/custom-source/index.vue'
+import SideMenuComp, { type PageConfigInterface as SideMenuConfig } from './components/side_menu/index.vue'
 import InfoComp from './components/info/index.vue'
 import SourceListComp from './components/source_list/index.vue'
 import PoemComp from './components/poem/index.vue'
@@ -26,11 +26,17 @@ import { addSource, PlayList, removeAudioSourceToPlayList, type AudioSourceListT
 
 let pgInfo = reactive({ playList: PlayList }),
   addSourceList = addSource,
-  customCompRef = ref<PageConfigInterface>(),
-  showCustomBox = () => {
+  customCompRef = ref<CustomSourceConfig>(),
+  sideMenuCompRef = ref<SideMenuConfig>(),
+  showCustomComp = () => {
     if (!customCompRef.value) return
     customCompRef.value.pgInfo.show = true
     console.log('showCustomBox:', customCompRef.value?.pgInfo.show)
+  },
+  showSideMenuComp = () => {
+    if (!sideMenuCompRef.value) return
+    sideMenuCompRef.value.pgInfo.showMenu = true
+    console.log('showSideMenuComp:', sideMenuCompRef.value.pgInfo.showMenu)
   }
 </script>
 
