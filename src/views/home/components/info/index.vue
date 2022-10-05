@@ -1,6 +1,7 @@
 <template>
-  <main class="info-container">
+  <main class="info-container text-white">
     {{ pgInfo.season?.text }}
+    <router-link :to="pgInfo.syncPath.uri">{{ pgInfo.syncPath.text }}</router-link>
   </main>
 </template>
 
@@ -10,10 +11,17 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import { reactive } from 'vue'
+import { useRoute } from 'vue-router'
+import { onMounted, reactive } from 'vue'
 import { getDayPart, getSeason } from '../..'
 
-const pgInfo = reactive({ season: getSeason(), dayPart: getDayPart() })
+const pgInfo = reactive({ season: getSeason(), dayPart: getDayPart(), syncPath: { uri: '/about', text: '关于' } }),
+  handleRoute = () => {
+    if (useRoute().fullPath !== '/about') return
+    pgInfo.syncPath = { text: '首页', uri: '/' }
+    console.log('handleRoute:', useRoute().fullPath)
+  }
+onMounted(handleRoute)
 </script>
 
 <style lang="scss" scoped>

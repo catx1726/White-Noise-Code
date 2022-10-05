@@ -1,0 +1,27 @@
+.about-container {
+  top: 25%;
+  height: 50%;
+  max-width: 70ch;
+  padding: 3em 1em;
+  margin: auto;
+  line-height: 1.75;
+
+  overflow-y: scroll;
+  position: relative;
+  background-color: var(--base-black-op-5);
+}
+
+.about-container :deep(*) {
+  font-size: revert;
+  font-weight: revert;
+  list-style: inside;
+}
+.about-container :deep(h1) {
+  margin-top: 10px;
+}
+.about-container :deep(h2) {
+  margin-bottom: 5px;
+}
+.about-container :deep(a) {
+  text-decoration: underline;
+}
