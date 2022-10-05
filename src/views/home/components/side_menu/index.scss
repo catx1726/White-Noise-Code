@@ -2,6 +2,7 @@
   right: 0;
   width: 30%;
   height: 100%;
+  overflow: hidden;
 
   position: absolute;
 }
@@ -18,7 +19,7 @@
   height: 100%;
   width: 100%;
   padding: 50px 10px;
-  overflow-y: scroll;
+  overflow-y: auto;
   box-sizing: border-box;
   transform: translateX(0);
   background-color: var(--base-black-op-5);
@@ -32,6 +33,10 @@
   position: absolute;
 }
 
+.play-list-box{
+  min-height: 100%;
+}
+
 .play-item {
   width: 100%;
   margin: 20px 0;
@@ -43,16 +48,16 @@
 .play-item:first-child {
   margin-top: 0;
 }
-.play-item:last-child {
-  margin-bottom: 0;
-}
+// .play-item:last-child {
+//   margin-bottom: 0;
+// }
 
 .add-your-source-box {
   bottom: 0;
   right: 0;
   width: 100%;
   padding: 10px 50px;
-  position: absolute;
+  position: relative;
 }
 
 .v-enter-active,

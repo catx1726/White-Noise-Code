@@ -10,6 +10,21 @@ html {
   /* font-size: 62.5%; */
 }
 
+* {
+  /* firefox scroll bar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--base-black) var(--base-gray-op-3);
+}
+
+/* chrome scroll bar */
+:root ::-webkit-scrollbar {
+  width: 8px;
+  background-color: var(--base-gray-op-3);
+}
+:root ::-webkit-scrollbar-thumb {
+  background-color: var(--base-accent);
+}
+
 :root {
   --base-gray: #c4c4c4; // 灰色
   --base-gray-op-5: rgba(196, 196, 196, 0.5); // 灰色降低透明度 50%

@@ -4,6 +4,7 @@
   width: 70%;
   width: fit-content;
   max-height: 300px;
-  overflow-y: scroll;
-  padding: 0 0 50px 50px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  margin: 0 0 50px 50px;
 }
