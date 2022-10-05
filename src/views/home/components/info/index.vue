@@ -1,5 +1,5 @@
 <template>
-  <main class="info-container ">
+  <main class="info-container">
     {{ pgInfo.season?.text }}
   </main>
 </template>

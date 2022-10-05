@@ -11,7 +11,7 @@
   left: 0;
   top: 0;
   width: 70%;
-  height: 70%;
+  height: calc(100% - 125px);
   position: fixed;
 }
 
@@ -62,11 +62,17 @@
   .source-item {
     width: auto;
 
-    margin: 0 10px;
+    position: relative;
+    margin: 0 20px;
     background-size: 0 1px;
     background-repeat: no-repeat;
     background-image: linear-gradient(to left, var(--base-white), var(--base-white));
     background-position: 0% 100%;
+
+    .icon {
+      top: -10px;
+      right: -20px;
+    }
   }
 
   .source-item:first-of-type {

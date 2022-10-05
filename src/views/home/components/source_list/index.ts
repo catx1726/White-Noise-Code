@@ -1,4 +1,7 @@
-import { reactive } from 'vue'
+import { Info } from '@/components/info_box'
+import { G_DB } from '@/main'
+import { getItem, setItem } from '@/utils/db'
+import { reactive, toRaw } from 'vue'
 
 export enum AudioSourceEnum {
   Birds = 1,
@@ -36,7 +39,7 @@ export const AudioSourceTypeList = {
   Custom: { enum: AudioSourceEnum.Custom, title: '自定', text: '随意春芳歇，王孙自可留。' } as AudioSourceType
 }
 
-export const AudioSourceList = [
+const setupAudioSourceList = [
   { type: AudioSourceTypeList.Birds, link: 'https://cdn.freesound.org/previews/387/387978_6221013-lq.mp3', text: '忻忻众鸟鸣' },
   { type: AudioSourceTypeList.Water, link: 'https://cdn.freesound.org/previews/442/442492_5902878-lq.mp3', text: '明河共影' },
   { type: AudioSourceTypeList.Fire, link: 'https://cdn.freesound.org/previews/378/378641_7023777-lq.mp3', text: '红泥小火炉' },
@@ -47,6 +50,8 @@ export const AudioSourceList = [
   { type: AudioSourceTypeList.People, link: 'https://cdn.freesound.org/previews/625/625112_12946258-lq.mp3', text: '知者动' },
   { type: AudioSourceTypeList.People, link: 'https://cdn.freesound.org/previews/339/339983_5984982-lq.mp3', text: '仁者静' }
 ] as Array<AudioSourceListType>
+
+export let AudioSourceList = reactive([] as Array<AudioSourceListType>)
 
 export const PlayList = reactive([] as Array<AudioSourceListType>)
 
@@ -73,5 +78,33 @@ export function removeAudioSourceToPlayList(index: number) {
 
 export function addSource(source: AudioSourceListType) {
   AudioSourceList.push(source)
-  console.log('addSource', AudioSourceList)
+  setItem(G_DB.SOURCE_DB, '', toRaw(AudioSourceList))
+  console.log('addSource', source, AudioSourceList)
+}
+
+export function removeSource(index: number) {
+  console.log('removeSource :', index)
+  if (index === -1) return
+  AudioSourceList.splice(index, 1)
+  setItem(G_DB.SOURCE_DB, '', toRaw(AudioSourceList))
+  console.log('removeSource done:', AudioSourceList)
+}
+
+export function resetAudioSource() {
+  setItem(G_DB.SOURCE_DB, '', setupAudioSourceList)
+  AudioSourceList = reactive(setupAudioSourceList)
+  Info({ message: '已恢复', duration: 3000, type: 'info', show: true })
+}
+
+export async function getSource() {
+  let db = (await getItem(G_DB.SOURCE_DB)) as Array<AudioSourceListType>,
+    setUp = [...setupAudioSourceList]
+  AudioSourceList = db
+  if (!db || !db.length) {
+    setItem(G_DB.SOURCE_DB, '', setUp)
+    AudioSourceList = setUp
+    return setUp
+  }
+
+  return db
 }

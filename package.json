@@ -10,6 +10,9 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "jinrishici": "^1.0.6",
+    "localforage": "^1.10.0",
+    "terser": "^5.15.0",
     "vue": "^3.2.38",
     "vue-router": "^4.1.5"
   },

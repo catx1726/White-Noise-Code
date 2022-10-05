@@ -22,6 +22,9 @@ html {
   --base-accent: #cc2728; // 点缀色
   --base-accent-op-3: rgba(204, 39, 40, 0.3); // 点缀色透明度30%
 
+  --base-success: #ffffff;
+  --base-error: var(--base-accent);
+
   --base-duration: 0.5s;
   --base-opacity: 0.6;
 

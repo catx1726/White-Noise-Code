@@ -23,6 +23,7 @@ import PoemComp from './components/poem/index.vue'
 
 import { onMounted, reactive, ref } from 'vue'
 import { addSource, PlayList, removeAudioSourceToPlayList, type AudioSourceListType } from './components/source_list'
+import { Info } from '@/components/info_box'
 
 let pgInfo = reactive({ playList: PlayList }),
   addSourceList = addSource,

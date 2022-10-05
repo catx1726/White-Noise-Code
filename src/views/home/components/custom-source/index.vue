@@ -1,7 +1,7 @@
 <template>
   <transition>
     <main v-if="pgInfo.show" class="custom-source-container flex items-center justify-center">
-      <div class="modal" @click="pgInfo.show = false" />
+      <div v-if="pgInfo.show" class="modal" @click="pgInfo.show = false" />
       <div class="custom-box">
         <div class="item">
           <span class="title">归属:</span>
@@ -32,6 +32,7 @@ export default {
 }
 </script>
 <script lang="ts" setup>
+import { Info } from '@/components/info_box'
 import { reactive } from 'vue'
 import { AudioSourceTypeList, type AudioSourceListType, type AudioSourceType } from '../source_list'
 
@@ -45,6 +46,8 @@ const pgInfo = reactive({ show: false, val: { link: '', type: AudioSourceTypeLis
     console.log('submit:', pgInfo.val)
     emit('add-source-list', pgInfo.val)
     pgInfo.show = false
+    pgInfo.val = { link: '', type: AudioSourceTypeList.Custom, text: '' } as AudioSourceListType
+    Info({ message: '已添加', type: 'info', duration: 2000, show: true })
   }
 
 defineExpose({ pgInfo })

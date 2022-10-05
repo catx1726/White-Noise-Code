@@ -1,6 +1,6 @@
 <template>
-  <main class="poem-container">
-    <pre>{{ pgInfo.poem.content }}</pre>
+  <main class="poem-container flex">
+    <div v-html="pgInfo.poem.content" />
   </main>
 </template>
 
@@ -10,10 +10,12 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import { getPoem } from '.'
-import { reactive } from 'vue'
+import { getPoem, type PoemType } from '.'
+import { onMounted, reactive } from 'vue'
 
-const pgInfo = reactive({ poem: getPoem() })
+const pgInfo = reactive({ poem: {} as PoemType })
+
+onMounted(() => getPoem(pgInfo))
 </script>
 
 <style lang="scss" scoped>

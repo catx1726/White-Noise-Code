@@ -1,6 +1,6 @@
 <template>
   <main class="side-menu-container">
-    <div v-show="pgInfo.showMenu" class="modal" @click="pgInfo.showMenu = false" />
+    <div v-if="pgInfo.showMenu" class="modal" @click="pgInfo.showMenu = false" />
     <div class="trigger-box flex justify-end">
       <svg-icon :name="pgInfo.showMenu ? 'close' : 'open'" class="cursor-pointer" @click="pgInfo.showMenu = !pgInfo.showMenu" />
     </div>
@@ -17,8 +17,9 @@
             </div>
           </transition-group>
         </div>
-        <div class="add-your-source-box">
-          <span class="cursor-pointer" @click="$emit('show-custom-box')">添加你自己的音源</span>
+        <div class="add-your-source-box flex justify-between">
+          <span class="cursor-pointer" @click="$emit('show-custom-box')">添加音源</span>
+          <span class="cursor-pointer" @click="resetAudioSource">恢复预设</span>
         </div>
       </div>
     </transition>
@@ -32,7 +33,7 @@ export default {
 </script>
 <script lang="ts" setup>
 import { reactive, watch } from 'vue'
-import { PlayList, removeAudioSourceToPlayList } from '../source_list'
+import { PlayList, removeAudioSourceToPlayList, resetAudioSource } from '../source_list'
 
 export interface PageConfigInterface {
   pgInfo: { showMenu: boolean }
