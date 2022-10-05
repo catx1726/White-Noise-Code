@@ -1,0 +1,36 @@
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["refactor"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Push To Pages
+        working-directory: ./dist # 指定下面指令运行的目录
+        run: |
+          git init
+          git checkout -b master
+          git add -A
+          git -c user.name='catx1726' -c user.email='catx1726@foxmail.com' commit -m 'github action deploy'
+          git remote add origin https://${{secrets.<YOUR_TOKEN>}}@github.com/<YOUR_NAME>/blog.git
+          git push origin master -f -q
