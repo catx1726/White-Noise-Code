@@ -75,7 +75,7 @@ export const Poem = [
 知者动，仁者静。<br/>
 知者乐，仁者寿。<br/>
             `,
-    audioSourceType: AudioSourceEnum.People
+    audioSourceType: AudioSourceEnum.Enviroment
   }
 ] as Array<PoemType>
 

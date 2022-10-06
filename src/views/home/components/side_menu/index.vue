@@ -1,5 +1,5 @@
 <template>
-  <main class="side-menu-container" :style="{ 'z-index': pgInfo.showMenu ? 20 : 0 }">
+  <main class="side-menu-container" :style="{ 'z-index': pgInfo.showMenu ? 30 : 0 }">
     <div v-if="pgInfo.showMenu" class="modal" @click="pgInfo.showMenu = false" />
     <div class="trigger-box flex justify-end">
       <svg-icon :name="pgInfo.showMenu ? 'close' : 'open'" class="cursor-pointer" @click="pgInfo.showMenu = !pgInfo.showMenu" />
