@@ -3,22 +3,27 @@
     <div v-if="!pgInfo.showTypeList" class="modal" @click="pgInfo.showTypeList = true" />
 
     <transition>
-      <div v-if="pgInfo.audioSourceList.length && !pgInfo.showTypeList" class="source-box flex items-center">
+      <swiper v-if="pgInfo.audioSourceList.length && !pgInfo.showTypeList" :slides-per-view="'auto'" class="source-box flex items-center">
         <svg-icon name="close" class="cursor-pointer text-white fill-white icon" @click="pgInfo.showTypeList = true">close</svg-icon>
-        <div v-for="item of pgInfo.audioSourceList" :key="item.link" class="source-item cursor-pointer" @click.prevent="handleaddAudioSourceToPlayList(item)">
+        <swiper-slide
+          v-for="item of pgInfo.audioSourceList"
+          :key="item.link"
+          class="source-item cursor-pointer "
+          @click.prevent="handleaddAudioSourceToPlayList(item)"
+        >
           <svg-icon name="close" class="icon" @click.stop="handleRemoveSource(item)" />
           {{ item.text }}
-        </div>
-      </div>
+        </swiper-slide>
+      </swiper>
     </transition>
 
     <transition>
-      <div v-show="pgInfo.showTypeList" class="type-box flex justify-between">
-        <div v-for="item of pgInfo.sourceTypeList" :key="item.enum" class="type-item" @click="handleAudioSourceList(item)">
+      <swiper v-show="pgInfo.showTypeList" :slides-per-view="'auto'" class="type-box flex justify-between">
+        <swiper-slide v-for="item of pgInfo.sourceTypeList" :key="item.enum" class="type-item" @click="handleAudioSourceList(item)">
           <span class="title text-2xl">{{ item.title }}</span>
           <pre class="text">{{ item.text }}</pre>
-        </div>
-      </div>
+        </swiper-slide>
+      </swiper>
     </transition>
   </main>
 </template>
@@ -41,6 +46,12 @@ import {
 } from '.'
 import { reactive, defineProps, onMounted } from 'vue'
 import { Info } from '@/components/info_box'
+
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue'
+
+// Import Swiper styles
+import 'swiper/css'
 
 const pgInfo = reactive({
     showTypeList: true,

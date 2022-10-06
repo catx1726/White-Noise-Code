@@ -1,8 +1,10 @@
 .layout-container {
-  height: 100vh;
-  width: 100vw;
-  background-attachment: fixed;
-  background-position: center;
+  height: 100%;
+  width: 100%;
+  // top: 0;
+  // position: absolute;
+  // background-attachment: fixed;
+  background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
 }

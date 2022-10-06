@@ -71,7 +71,7 @@ export function addAudioSourceToPlayList(source: AudioSourceListType) {
 }
 
 export function removeAudioSourceToPlayList(index: number) {
-  console.log('removeAudioSourceToPlayList :', PlayList)
+  console.log('removeAudioSourceToPlayList :', index, PlayList)
   PlayList.splice(index, 1)
   console.log('removeAudioSourceToPlayList done:', PlayList)
 }
