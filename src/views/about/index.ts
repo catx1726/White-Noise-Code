@@ -53,8 +53,10 @@ export const AboutMD = `
 <li>古诗推荐来自 <a href="https://www.jinrishici.com/doc/">今日诗词</a></li>
 </ul>
 <h2 id="相关说明">相关说明</h2>
-<p>网站用于学习、交流，无商用、无盈利，如有侵权请<a href="https://github.com/catx1726/White-Noise-Code">联系作者</a>删除</p>
+<p>网站用于学习、交流，无商用、无盈利，如有侵权劳烦<a href="https://github.com/catx1726/White-Noise-Code">联系作者</a>删除</p>
+<p>你也可以通过 微信: MengSheng317 联系我</p>
 <h1 id="文末">文末</h1>
 <p>初完于 2022-10-05 19:09</p>
+<p>二改于 2022-10-07 13:30</p>
 
 `
