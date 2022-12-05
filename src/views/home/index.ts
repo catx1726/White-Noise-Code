@@ -44,7 +44,7 @@ export const DayParts = {
  */
 export function getSeason() {
   let d = new Date(),
-    curMonth = d.getMonth()
+    curMonth = d.getMonth() + 1
   return Object.values(Season).find((i: SeasonType) => i.month.some((j) => j === curMonth))
 }
 
