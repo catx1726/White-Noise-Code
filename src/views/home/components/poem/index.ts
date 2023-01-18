@@ -99,7 +99,7 @@ export function getPoem(reactiveData: { poem: PoemType }) {
         title: res.data.origin.title,
         author: res.data.origin.author,
         dynasty: res.data.origin.dynasty,
-        translate: res.data.origin.translate?.join('<br/>')
+        translate: res.data.origin.translate?.join('')
       }
       console.log('handleSuccess:', reactiveData)
       Promise.resolve(reactiveData)

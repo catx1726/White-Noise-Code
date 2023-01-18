@@ -16,7 +16,7 @@
             </div>
           </div>
           <div class="flex justify-center text-justify cursor-pointer poem-content" @click="copyThat(pgInfo.poem.content)" v-html="pgInfo.poem.content" />
-          <div v-show="pgInfo.poem.translate" class="flex justify-center text-justify cursor-pointer poem-content" @click="copyThat(pgInfo.poem.translate)">
+          <div v-show="pgInfo.poem.translate" class="flex justify-center text-justify cursor-pointer poem-content poem-translate" @click="copyThat(pgInfo.poem.translate)">
             译文: {{ pgInfo.poem.translate }}
           </div>
         </div>
