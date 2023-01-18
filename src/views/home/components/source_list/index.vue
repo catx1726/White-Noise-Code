@@ -4,15 +4,17 @@
 
     <transition>
       <swiper v-if="pgInfo.audioSourceList.length && !pgInfo.showTypeList" :free-mode="true" :slides-per-view="'auto'" class="source-box flex items-center">
-        <svg-icon name="close" class="cursor-pointer text-white fill-white icon" @click="pgInfo.showTypeList = true">close</svg-icon>
+        <span class="cursor-pointer text-white fill-white icon" @click="pgInfo.showTypeList = true">{{ '关' }}</span>
+        <!-- <svg-icon name="close" class="cursor-pointer text-white fill-white icon" @click="pgInfo.showTypeList = true">close</svg-icon> -->
         <swiper-slide
           v-for="(item, index) of pgInfo.audioSourceList"
           :key="item.link"
           class="source-item cursor-pointer"
           @click.prevent="handleaddAudioSourceToPlayList(item)"
         >
-          <svg-icon name="close" class="icon" @click.stop="handleRemoveSource(item)" />
-          {{ `${item.type.title}_${index + 1}` }}
+          <span class="cursor-pointer icon text-xs" @click.stop="handleRemoveSource(item)">{{ '删' }}</span>
+          {{ `${item.type.title}之${numberToCN(index + 1)}` }}
+          <!-- <svg-icon name="close" class="icon" @click.stop="handleRemoveSource(item)" /> -->
         </swiper-slide>
       </swiper>
     </transition>
@@ -52,6 +54,8 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 
 // Import Swiper styles
 import 'swiper/css'
+
+import { numberToCN } from '@/utils/index'
 
 const pgInfo = reactive({
     showTypeList: true,

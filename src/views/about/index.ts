@@ -33,6 +33,7 @@ export const AboutMD = `
 <li><input disabled="" type="checkbox"> 支持定时，类似于番茄时间</li>
 <li><input disabled="" type="checkbox"> 支持简单的数据分析</li>
 <li><input disabled="" type="checkbox"> 支持自定义背景图</li>
+<li><a href="https://github.com/catx1726/White-Noise-Code/blob/refactor/CHANGELOG.md">详见 CHANGELOG</a> </li>
 </ul>
 <h2 id="如何用">如何用</h2>
 <h3 id="自定义音源">自定义音源</h3>
@@ -58,5 +59,5 @@ export const AboutMD = `
 <h1 id="文末">文末</h1>
 <p>初完于 2022-10-05 19:09</p>
 <p>二改于 2022-10-07 13:30</p>
-
+<p>三改于 2023-01-18 22:16</p>
 `

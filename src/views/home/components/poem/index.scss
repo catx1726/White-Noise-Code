@@ -2,9 +2,95 @@
   z-index: 10;
   max-width: 65%;
   width: 65%;
+  position: relative;
   width: fit-content;
   max-height: 300px;
-  overflow-y: auto;
+
+  text-justify: auto;
   box-sizing: border-box;
-  margin: 0 0 50px 50px;
+}
+
+.poem-container,
+.poem-detail-dialog-container,
+.poem-content,
+.poem-detail-box,
+.icon {
+  transition: all var(--base-duration) ease;
+}
+
+.poem-container:hover .icon {
+  opacity: 1;
+}
+
+.poem-content {
+  letter-spacing: 1px;
+}
+
+.poem-container .icon + .poem-content {
+  overflow-y: auto;
+  text-align: justify;
+  padding: 25px 25px 25px 50px;
+}
+
+.poem-container .icon + .poem-content:hover {
+  background-color: var(--base-black-op-5);
+}
+
+.icon {
+  opacity: 0;
+  top: var(--base-pd-md);
+  right: var(--base-pd-md);
+  position: absolute;
+}
+
+.poem-detail-dialog-container,
+.poem-detail-dialog-container .modal {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+}
+
+.poem-detail-dialog-container {
+  left: 0;
+  top: 0;
+}
+
+.poem-detail-dialog-container .modal {
+  z-index: 10;
+}
+
+.poem-detail-box {
+  z-index: 20;
+  left: 50%;
+  top: 10%;
+  padding: 20px;
+  max-width: 50%;
+  max-height: 300px;
+  overflow-y: auto;
+  text-align: justify;
+  text-justify: auto;
+  position: relative;
+  box-sizing: border-box;
+  transform: translateX(-50%);
+  padding: calc(var(--base-pd-md) * 2);
+  background-color: var(--base-black-op-5);
+}
+
+.title-author-dynasty {
+  margin-bottom: var(--base-pd-md);
+}
+
+.dynasty {
+  padding-right: var(--base-pd-md);
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.3s ease;
+}
+
+.v-leave-to,
+.v-enter-from {
+  opacity: 0;
+  background-color: transparent;
 }

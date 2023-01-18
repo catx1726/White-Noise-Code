@@ -5,6 +5,10 @@ import { reactive } from 'vue'
 
 export interface PoemType {
   content: string
+  title: string
+  author: string
+  dynasty: string
+  translate: string
   audioSourceType: AudioSourceEnum
 }
 
@@ -91,7 +95,11 @@ export function getPoem(reactiveData: { poem: PoemType }) {
     handleSuccess = (res: any) => {
       reactiveData.poem = {
         audioSourceType: AudioSourceEnum.Custom,
-        content: res.data.origin.content.join('<br/>')
+        content: res.data.origin.content.join('<br/>'),
+        title: res.data.origin.title,
+        author: res.data.origin.author,
+        dynasty: res.data.origin.dynasty,
+        translate: res.data.origin.translate?.join('<br/>')
       }
       console.log('handleSuccess:', reactiveData)
       Promise.resolve(reactiveData)

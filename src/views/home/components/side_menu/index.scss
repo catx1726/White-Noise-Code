@@ -21,7 +21,7 @@
 .side-menu-box {
   height: 100%;
   width: 100%;
-  padding: 50px 10px;
+  padding: 50px var(--base-pd-md);
   overflow-y: auto;
   box-sizing: border-box;
   transform: translateX(0);
@@ -29,20 +29,31 @@
 }
 
 .trigger-box {
-  padding-top: 12px;
-  padding-right: 18px;
   width: 100%;
   z-index: 10;
   position: absolute;
+  user-select: none;
 }
 
-.play-list-box{
+.trigger-icon {
+  box-sizing: border-box;
+  padding: var(--base-pd-md);
+  transition: all var(--base-duration) ease;
+}
+
+.trigger-icon:hover {
+  color: var(--base-white);
+  background-color: var(--base-black);
+}
+
+.play-list-box {
   // min-height: 100vh;
 }
 
 .play-item {
   width: 100%;
   margin: 20px 0;
+  margin: calc(var(--base-pd-md) * 2) 0;
   audio {
     width: 100%;
   }
