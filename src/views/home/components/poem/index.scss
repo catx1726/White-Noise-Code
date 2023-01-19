@@ -1,7 +1,8 @@
 .poem-container {
   z-index: 10;
-  max-width: 65%;
   width: 65%;
+  max-width: 65%;
+  min-width: 350px;
   position: relative;
   width: fit-content;
   max-height: 300px;
@@ -65,7 +66,7 @@
   top: 10%;
   padding: 20px;
   max-width: 50%;
-  min-width: 300px;
+  min-width: 350px;
   max-height: 600px;
   overflow-y: auto;
   text-align: justify;
