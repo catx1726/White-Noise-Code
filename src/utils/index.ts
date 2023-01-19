@@ -41,3 +41,22 @@ export async function copyThat(val: string) {
 
   Info({ message: '已复制!', type: 'info', duration: 3000, show: true })
 }
+
+export function timeFliesFast(receiver: { hour: number; min: number; sec: number }) {
+  if (receiver.sec + 1 > 60) {
+    receiver.sec = 0
+    receiver.min++
+  }
+  if (receiver.min > 60) {
+    receiver.min = 1
+    receiver.hour++
+  }
+  receiver.sec++
+  console.log('timeFliesFast:', receiver.hour, receiver.min, receiver.sec)
+  return receiver
+}
+
+export function getMonthDays(year: number, month: number) {
+  let d = new Date(year, month, 0)
+  return d.getDate()
+}

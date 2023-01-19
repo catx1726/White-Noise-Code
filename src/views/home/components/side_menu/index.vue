@@ -23,6 +23,7 @@
           <span class="cursor-pointer" @click="$emit('show-custom-box')">添加音源</span>
           <span class="cursor-pointer" @click="resetAudioSource">恢复预设</span>
         </div>
+        <ImmerseComp />
       </div>
     </transition>
   </main>
@@ -35,6 +36,7 @@ export default {
 </script>
 <script lang="ts" setup>
 import { reactive, watch } from 'vue'
+import ImmerseComp from './components/immerse/index.vue'
 import { PlayList, removeAudioSourceToPlayList, resetAudioSource } from '../source_list'
 
 export interface PageConfigInterface {

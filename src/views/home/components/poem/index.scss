@@ -65,7 +65,8 @@
   top: 10%;
   padding: 20px;
   max-width: 50%;
-  max-height: 300px;
+  min-width: 300px;
+  max-height: 600px;
   overflow-y: auto;
   text-align: justify;
   text-justify: auto;

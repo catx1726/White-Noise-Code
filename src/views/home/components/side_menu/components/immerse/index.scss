@@ -1,0 +1,26 @@
+.immerse-container {
+  padding: 0 var(--base-pd-md);
+}
+
+input {
+  max-width: 40%;
+  text-align: center;
+  color: var(--base-white);
+  outline: transparent;
+  background-color: transparent;
+  border-bottom: 1px solid var(--base-white);
+}
+
+.immerse-button {
+  box-sizing: border-box;
+  padding: 1px 4px;
+  transition: all var(--base-duration) ease;
+}
+
+.immerse-button:hover {
+  background-color: var(--base-black);
+}
+
+.timer {
+  flex-shrink: 0;
+}

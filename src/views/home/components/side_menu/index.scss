@@ -48,6 +48,8 @@
 
 .play-list-box {
   // min-height: 100vh;
+  height: 90%;
+  overflow-y: auto;
 }
 
 .play-item {
