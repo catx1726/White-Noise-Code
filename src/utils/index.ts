@@ -43,15 +43,15 @@ export async function copyThat(val: string) {
 }
 
 export function timeFliesFast(receiver: { hour: number; min: number; sec: number }) {
-  if (receiver.sec + 1 > 60) {
-    receiver.sec = 0
+  receiver.sec++
+  if (receiver.sec > 60) {
+    receiver.sec = 1
     receiver.min++
   }
   if (receiver.min > 60) {
     receiver.min = 1
     receiver.hour++
   }
-  receiver.sec++
   console.log('timeFliesFast:', receiver.hour, receiver.min, receiver.sec)
   return receiver
 }
