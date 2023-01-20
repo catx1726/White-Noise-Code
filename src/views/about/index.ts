@@ -27,11 +27,11 @@ export const AboutMD = `
 <li>支持自定义导入音源，目前只支持通过链接的方式导入</li>
 <li>支持音源本地持久化</li>
 <li>内置按照季节、时段切换的背景图</li>
+<li>支持定时与专注，~~类似于番茄时间~~</li>
+<li>支持简单的数据分析(昨日回顾)</li>
 </ol>
 <h3 id="未来">未来</h3>
 <ul>
-<li><input disabled="" type="checkbox"> 支持定时，类似于番茄时间</li>
-<li><input disabled="" type="checkbox"> 支持简单的数据分析</li>
 <li><input disabled="" type="checkbox"> 支持自定义背景图</li>
 <li><a href="https://github.com/catx1726/White-Noise-Code/blob/refactor/CHANGELOG.md">详见 CHANGELOG</a> </li>
 </ul>

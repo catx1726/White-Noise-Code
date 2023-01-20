@@ -16,7 +16,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-import CustomSourceComp, { type PageConfigInterface as CustomSourceConfig } from './components/custom-source/index.vue'
+import CustomSourceComp, { type PageConfigInterface as CustomSourceConfig } from './components/custom_source/index.vue'
 import SideMenuComp, { type PageConfigInterface as SideMenuConfig } from './components/side_menu/index.vue'
 import ImmerseRecordComp, { type PageConfigInterface as ImmerseConfig } from '@/views/home/components/side_menu/components/your_immerse_record/index.vue'
 import InfoComp from './components/info/index.vue'
