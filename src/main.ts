@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import '@/style/index.scss'
 import 'virtual:svg-icons-register'
-
+import dayjs from 'dayjs'
 import autoRegisterInstall from '@/utils/global_components_auto_register'
 import normalRegisterInstall from '@/utils/global_components_register'
 import localForage from 'localforage'
@@ -11,7 +11,7 @@ import localForage from 'localforage'
 const app = createApp(App)
 
 export const G_UI = {},
-  G_FN = {},
+  G_FN = { DAYJS: dayjs },
   G_BOM = { DOC: document, WIN: window },
   G_DB = { SOURCE_DB: localForage.createInstance({ name: 'source' }) }
 

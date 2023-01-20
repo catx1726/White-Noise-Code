@@ -1,10 +1,12 @@
 <template>
-  <main class="immerse-container flex justify-between">
-    <div>
-      <input v-model="pgInfo.immerseName" autocomplete="on" type="text" placeholder="沉浸于何事" />
+  <main class="immerse-container flex justify-between flex-wrap">
+    <div class="input-box">
+      <input v-model="pgInfo.immerseName" autocomplete="on" type="text" placeholder="专注于何事" />
       <button class="immerse-button" @click="pgInfo.immerse = startNewImmerse(pgInfo.immerseName, pgInfo.immerse)">即刻起</button>
     </div>
-    <span class="timer">{{ handleTimerShow(pgInfo.immerse) }}</span>
+    <div class="timer-box text-end">
+      <span>{{ handleTimerShow(pgInfo.immerse) }}</span>
+    </div>
   </main>
 </template>
 
@@ -15,7 +17,7 @@ export default {
 </script>
 <script lang="ts" setup>
 import { reactive, onMounted, watch, onUnmounted } from 'vue'
-import { timeFliesFast } from '@/utils/index'
+import { numberToCN, timeFliesFast } from '@/utils/index'
 import { type ImmerseInterface, startNewImmerse, autoSaveImmerse, initImmerseDB } from '.'
 
 let intervalID: number
@@ -28,7 +30,7 @@ const pgInfo = reactive({
   handleTimerShow = (immerse: ImmerseInterface) => {
     // let hour = immerse.duration.hour <= 9 ? '0' + immerse.duration.hour : immerse.duration.hour,
     // min = immerse.duration.min <= 9 ? '0' + immerse.duration.min : immerse.duration.min
-    return `${immerse.duration.hour}时${immerse.duration.min}分`
+    return `${numberToCN(immerse.duration.hour)}时${numberToCN(immerse.duration.min)}分${numberToCN(immerse.duration.sec)}秒`
   },
   mountedEntry = async() => {
     await initImmerseDB()

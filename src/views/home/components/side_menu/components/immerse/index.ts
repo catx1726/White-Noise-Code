@@ -73,7 +73,7 @@ export async function saveImmerse(immerse: ImmerseInterface) {
  */
 export function autoSaveImmerse(immerse: ImmerseInterface) {
   if (!ImmerseConfig.autoSave || !ImmerseConfig.autoSaveInterval) return
-  if (immerse.duration.min === ImmerseConfig.autoSaveInterval && immerse.duration.sec === 1) saveImmerse(immerse)
+  if (immerse.duration.min % ImmerseConfig.autoSaveInterval === 0 && immerse.duration.sec === 1) saveImmerse(immerse)
 }
 
 /**

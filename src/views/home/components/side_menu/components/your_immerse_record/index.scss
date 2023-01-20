@@ -1,0 +1,41 @@
+.record-container {
+}
+
+.record-box {
+  left: 50%;
+  top: 50%;
+  z-index: 40;
+  min-width: 350px;
+  min-height: 350px;
+  padding: 50px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background-color: var(--base-black-op-5);
+}
+
+.record-box span:first-child {
+  margin: var(--base-pd-md) 0;
+}
+
+.record-box .immerse-item {
+  margin: 5px 0;
+}
+
+.modal {
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.3s ease;
+}
+
+.v-leave-to,
+.v-enter-from {
+  opacity: 0;
+  background-color: transparent;
+}

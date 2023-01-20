@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "dayjs": "^1.11.7",
     "jinrishici": "^1.0.6",
     "localforage": "^1.10.0",
     "swiper": "^8.4.2",

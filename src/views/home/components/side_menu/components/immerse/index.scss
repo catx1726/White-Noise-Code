@@ -1,9 +1,13 @@
 .immerse-container {
-  padding: 0 var(--base-pd-md);
+  // padding: 0 var(--base-pd-md);
 }
 
+.input-box {
+  max-width: 50%;
+  flex-shrink: 0;
+}
 input {
-  max-width: 40%;
+  max-width: 60%;
   text-align: center;
   color: var(--base-white);
   outline: transparent;
@@ -21,6 +25,12 @@ input {
   background-color: var(--base-black);
 }
 
-.timer {
+.timer-box {
   flex-shrink: 0;
+  flex-grow: 1;
+}
+
+.input-box,
+.timer-box {
+  // padding-top: var(--base-pd-md);
 }

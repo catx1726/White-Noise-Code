@@ -1,4 +1,5 @@
 import { Info } from '../components/info_box/index'
+import { G_FN } from '@/main'
 export function numberToCN(num: number) {
   let arr1 = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'],
     arr2 = ['', '十', '百', '千', '万', '十', '百', '千', '亿', '十', '百', '千', '万', '十', '百', '千', '亿'] // 可继续追加更高位转换值
@@ -59,4 +60,35 @@ export function timeFliesFast(receiver: { hour: number; min: number; sec: number
 export function getMonthDays(year: number, month: number) {
   let d = new Date(year, month, 0)
   return d.getDate()
+}
+
+/**
+ *
+ *
+ * @export
+ * @description 拿到 昨日 上周 上月 的日期
+ * @return {*}
+ */
+export function getLastDate() {
+  return {
+    yesterDay: G_FN.DAYJS().subtract(1, 'days').format('YYYY-M-D'),
+    lastWeek: G_FN.DAYJS().add(-1, 'week').startOf('week').add(1, 'day').format('YYYY-M-D'),
+    lastMonth: G_FN.DAYJS().add(-1, 'month').startOf('month').format('YYYY-M-D')
+  }
+}
+
+/**
+ *
+ *
+ * @export
+ * @description 拿到年,本月第几天,本年第几月
+ * @return {*}
+ */
+export function getCurrentDayMonthYear() {
+  let _d = new Date()
+  return {
+    year: _d.getFullYear(),
+    month: _d.getMonth() + 1,
+    day: _d.getDate()
+  }
 }

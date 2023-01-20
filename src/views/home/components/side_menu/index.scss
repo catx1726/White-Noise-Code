@@ -22,6 +22,7 @@
   height: 100%;
   width: 100%;
   padding: 50px var(--base-pd-md);
+  padding-bottom: 25px;
   overflow-y: auto;
   box-sizing: border-box;
   transform: translateX(0);
@@ -68,11 +69,12 @@
 //   margin-bottom: 0;
 // }
 
-.add-your-source-box {
+.add-your-source-box,
+.show-immerse-record-box {
   bottom: 0;
   right: 0;
   width: 100%;
-  padding: 10px 50px;
+  padding: 0 50px;
   position: relative;
 }
 
