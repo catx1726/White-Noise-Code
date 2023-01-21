@@ -1,12 +1,16 @@
 .record-container {
+  
 }
 
 .record-box {
   left: 50%;
   top: 50%;
   z-index: 40;
-  max-height: 400px;
+  width: 60%;
+  height: 60%;
+  max-width: 600px;
   min-width: 350px;
+  max-height: 400px;
   min-height: 350px;
   overflow-y: auto;
   padding: 50px;
@@ -15,12 +19,17 @@
   background-color: var(--base-black-op-5);
 }
 
-.record-box span:first-child {
+.record-box .info {
   margin: var(--base-pd-md) 0;
 }
 
 .record-box .immerse-item {
   margin: 5px 0;
+}
+
+.record-box .tips{
+  bottom: 0;
+  position: absolute;
 }
 
 .modal {

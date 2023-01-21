@@ -3,9 +3,10 @@
   width: 65%;
   max-width: 65%;
   min-width: 350px;
-  position: relative;
   width: fit-content;
   max-height: 300px;
+  position: relative;
+ 
 
   text-justify: auto;
   box-sizing: border-box;
@@ -24,6 +25,7 @@
 }
 
 .poem-content {
+  min-width: 350px;
   letter-spacing: 1px;
 }
 

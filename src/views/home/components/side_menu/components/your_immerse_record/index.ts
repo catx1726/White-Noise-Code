@@ -26,10 +26,11 @@ export async function getYesterdayRecord(): Promise<{ [date: string]: Array<Imme
       for (const item of data) {
         finded = backData.find((fItem) => fItem.startTime === item.startTime)
         findedIndex = backData.findIndex((fItem) => fItem.startTime === item.startTime)
+        if (item.duration.min < ImmerseConfig.autoSaveInterval) continue
         if (!finded) backData.push(item)
         if (!finded?.endTime) continue
         if (finded.endTime >= item.endTime) continue
-        // 找到自动备份的项 且 endTime < fItem,就进行更新
+        // 找到自动备份的项 且 item.endTime > fItem.endTime ,就进行更新
         backData.splice(findedIndex, 1, item)
       }
       console.log('dedupHandler:', backData)

@@ -9,6 +9,10 @@ export const ImmerseConfig = {
   defaultImmerseName: '万物萌生'
 }
 
+export const ImmerseText = {
+  explanation: `专注会每隔${ImmerseConfig.autoSaveInterval}分钟自动保存,在统计界面会过滤掉小于${ImmerseConfig.autoSaveInterval}分钟的专注`
+}
+
 export interface ImmerseInterface {
   immerseName: string
   duration: { hour: number; min: number; sec: number }
@@ -73,7 +77,9 @@ export async function saveImmerse(immerse: ImmerseInterface) {
  */
 export function autoSaveImmerse(immerse: ImmerseInterface) {
   if (!ImmerseConfig.autoSave || !ImmerseConfig.autoSaveInterval) return
-  if (immerse.duration.min % ImmerseConfig.autoSaveInterval === 0 && immerse.duration.sec === 1) saveImmerse(immerse)
+  if (immerse.duration.min >= ImmerseConfig.autoSaveInterval && immerse.duration.min % ImmerseConfig.autoSaveInterval === 0 && immerse.duration.sec === 1) {
+    saveImmerse(immerse)
+  }
 }
 
 /**

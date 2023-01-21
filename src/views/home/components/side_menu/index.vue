@@ -2,7 +2,9 @@
   <main class="side-menu-container" :style="{ 'z-index': pgInfo.showMenu ? 30 : 0 }">
     <div v-if="pgInfo.showMenu" class="modal" @click="pgInfo.showMenu = false" />
     <div class="trigger-box flex justify-end">
-      <span class="cursor-pointer trigger-icon" @click="pgInfo.showMenu = !pgInfo.showMenu">{{ pgInfo.showMenu ? '收' : '展' }}</span>
+      <span class="cursor-pointer trigger-icon" :class="!pgInfo.showMenu ? 'when-close-hightlight' : ''" @click="pgInfo.showMenu = !pgInfo.showMenu">
+        {{ pgInfo.showMenu ? '收' : '展' }}
+      </span>
       <!-- <svg-icon v-show="!pgInfo.showMenu" name="open" class="cursor-pointer" @click="pgInfo.showMenu = true" /> -->
     </div>
     <transition>
