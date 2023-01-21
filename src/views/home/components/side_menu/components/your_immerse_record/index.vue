@@ -3,10 +3,10 @@
     <main v-show="pgInfo.show" class="record-container">
       <div v-if="pgInfo.show" class="modal" @click="pgInfo.show = false" />
       <div class="record-box">
-        <nothing-here-comp v-if="pgInfo.data[yesterDay]" class="h-full flex items-center justify-center">
+        <nothing-here-comp v-if="!pgInfo.data[yesterDay]" class="h-full flex items-center justify-center">
           <span class="text-xl">昨日暂无专注</span>
         </nothing-here-comp>
-        <div v-else class="flex flex-col items-center justify-center">
+        <div v-else class="flex flex-col items-start justify-center">
           <span class="info self-start">昨日你一共专注于 {{ pgInfo.immerseLen }} 项事宜,具体如下:</span>
           <span v-for="(item, index) of pgInfo.data[yesterDay]" :key="`${item.immerseName}-${index}`" class="immerse-item">
             {{ index + 1 }}. {{ handleDataShow(item) }}
