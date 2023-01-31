@@ -47,8 +47,7 @@ const SetupAudioSourceList = [
 
   { type: AudioSourceTypeList.Water, link: 'https://cdn.freesound.org/previews/67/67884_634166-lq.mp3', text: '明河共影' },
   { type: AudioSourceTypeList.Water, link: 'https://cdn.freesound.org/previews/278/278883_8335-lq.mp3', text: '明河共影' },
-  { type: AudioSourceTypeList.Water, link: 'https://cdn.freesound.org/previews/71/71262_806506-lq.mp3', text: '明河共影' },
-  { type: AudioSourceTypeList.Water, link: 'https://cdn.freesound.org/previews/412/412941_4105649-lq.mp3', text: '明河共影' },
+  { type: AudioSourceTypeList.Water, link: 'https://cdn.freesound.org/previews/102/102808_649468-lq.mp3', text: '明河共影' },
 
   { type: AudioSourceTypeList.Fire, link: 'https://cdn.freesound.org/previews/378/378641_7023777-lq.mp3', text: '红泥小火炉' },
   { type: AudioSourceTypeList.Fire, link: 'https://cdn.freesound.org/previews/624/624425_13582756-lq.mp3', text: '红泥小火炉' },
@@ -65,6 +64,7 @@ const SetupAudioSourceList = [
   { type: AudioSourceTypeList.Breeze, link: 'https://cdn.freesound.org/previews/181/181250_499617-lq.mp3', text: '为谁风露立中宵' },
   { type: AudioSourceTypeList.Breeze, link: 'https://cdn.freesound.org/previews/350/350725_97763-lq.mp3', text: '为谁风露立中宵' },
   { type: AudioSourceTypeList.Breeze, link: 'https://cdn.freesound.org/previews/492/492807_9624089-lq.mp3', text: '为谁风露立中宵' },
+  { type: AudioSourceTypeList.Breeze, link: 'https://cdn.freesound.org/previews/71/71262_806506-lq.mp3', text: '为谁风露立中宵' },
 
   { type: AudioSourceTypeList.Clock, link: 'https://cdn.freesound.org/previews/530/530583_7707368-lq.mp3', text: '云起时' },
   { type: AudioSourceTypeList.Clock, link: 'https://cdn.freesound.org/previews/458/458627_2553004-lq.mp3', text: '云起时' },

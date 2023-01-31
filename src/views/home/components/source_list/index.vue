@@ -13,7 +13,7 @@
           @click.prevent="handleaddAudioSourceToPlayList(item)"
         >
           <span class="cursor-pointer icon text-xs" @click.stop="handleRemoveSource(item)">{{ '删' }}</span>
-          {{ `${item.type.title}之${numberToCN(index + 1)}` }}
+          {{ `${item.type.title}之${numberToCN(index + 1)}(${item.text})` }}
           <!-- <svg-icon name="close" class="icon" @click.stop="handleRemoveSource(item)" /> -->
         </swiper-slide>
       </swiper>
