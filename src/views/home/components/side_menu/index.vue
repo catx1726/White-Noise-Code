@@ -23,7 +23,7 @@
         </div>
 
         <div class="flex show-immerse-record-box">
-          <button @click="clickImmerseRecordButton()">回顾昨日</button>
+          <button @click="clickImmerseRecordButton()">回顾往昔</button>
         </div>
 
         <div class="add-your-source-box flex justify-between">

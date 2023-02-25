@@ -1,12 +1,14 @@
 import { G_DB } from '@/main'
-import { getItem, setItem, type DBImmerseInterface } from '@/utils/immerse'
-import { reactive, toRaw } from 'vue'
-import { getMonthDays } from '../../../../../../utils/index'
+import { getItem, setItem } from '@/utils/immerse'
+import { toRaw } from 'vue'
 
 export const ImmerseConfig = {
   autoSave: true,
   autoSaveInterval: 10,
-  defaultImmerseName: '万物萌生'
+  defaultImmerseName: '万物萌生',
+  // 获取过去过久的记录,默认为 7 天
+  recordPastSpan: 7,
+  immerseVersion: '1.0.0'
 }
 
 export const ImmerseText = {
@@ -58,12 +60,11 @@ export async function saveImmerse(immerse: ImmerseInterface) {
     month = _d.getMonth() + 1,
     day = _d.getDate(),
     currentTime = _d.getTime(),
-    find = await findImmerse(immerse.immerseName, year, month, day)
+    find = await findImmerse(immerse.immerseName, year, `${year}-${month}-${day}`)
 
-  // 存
   find.dayDBResult.push(toRaw({ ...immerse, duration: { ...immerse.duration }, endTime: currentTime }))
 
-  console.log('saveImmerse:', immerse, year, month, day, currentTime, find)
+  console.log('saveImmerse:', immerse, year, currentTime, find)
 
   await setItem(G_DB.SOURCE_DB, '', toRaw(find.yearDBResult))
 }
@@ -89,32 +90,27 @@ export function autoSaveImmerse(immerse: ImmerseInterface) {
  * @description 根据年月日名称找到指定的 immerse
  * @param {string} immerseName
  * @param {number} year
- * @param {number} month
- * @param {number} day
- * @return {*}  {Promise<{ yearDBResult: any; immerseIndex: number; dayDBResult: Array<ImmerseInterface> }>}
+ * @return {{Promise<{ yearDBResult: any; dayDBResult: Array<ImmerseInterface>; immerseIndex: number;}>}}
  */
 export async function findImmerse(
   immerseName: string,
   year: number,
-  month: number,
-  day: number
-): Promise<{ yearDBResult: any; immerseIndex: number; dayDBResult: Array<ImmerseInterface> }> {
+  date: string
+): Promise<{ yearDBResult: any; dayDBResult: Array<ImmerseInterface>; immerseIndex: number }> {
   // find year
   let yearDBResult: any = await getItem(G_DB.SOURCE_DB, `${year}_immerse`),
-    monthDBResult = null,
     dayDBResult: Array<ImmerseInterface>,
     immerseIndex: number
 
-  // find month
-  monthDBResult = yearDBResult[month]
+  if (!yearDBResult[date]) yearDBResult[date] = []
 
   // find day
-  dayDBResult = monthDBResult[day]
+  dayDBResult = yearDBResult[date]
 
   // find immerseName
   immerseIndex = dayDBResult.findIndex((i) => i.immerseName === immerseName)
 
-  console.log('findImmerse:', yearDBResult, monthDBResult, dayDBResult, immerseIndex)
+  console.log('findImmerse:', yearDBResult, dayDBResult, immerseIndex)
 
   return { yearDBResult, dayDBResult, immerseIndex }
 }
@@ -128,22 +124,18 @@ export async function findImmerse(
 export async function initImmerseDB() {
   let _d = new Date(),
     year = _d.getFullYear(),
-    yearDBResult: any = await getItem(G_DB.SOURCE_DB, `${year}_immerse`)
+    yearDBResult: any = await getItem(G_DB.SOURCE_DB, `${year}_immerse`),
+    immerseDBVersion = await getItem(G_DB.SOURCE_DB, `immerse_version_${ImmerseConfig.immerseVersion}`)
 
-  if (yearDBResult) return
+  // yearDB 存在 并且 version 相同,则无需 init
+  if (yearDBResult && ImmerseConfig.immerseVersion === immerseDBVersion) return
 
-  // 生成年
   yearDBResult = {}
 
-  // 生成月
-  for (let mIndex = 1; mIndex <= 12; mIndex++) {
-    yearDBResult[mIndex] = {}
-    // 生成天
-    for (let dIndex = 1; dIndex <= getMonthDays(year, mIndex); dIndex++) {
-      yearDBResult[mIndex][dIndex] = []
-    }
-  }
+  // 生成 version
+  await setItem(G_DB.SOURCE_DB, `immerse_version_${ImmerseConfig.immerseVersion}`, ImmerseConfig.immerseVersion)
 
+  // 生成 yearDB
   await setItem(G_DB.SOURCE_DB, '', yearDBResult)
 
   console.log('initImmerseDB:', await getItem(G_DB.SOURCE_DB, `${year}_immerse`))

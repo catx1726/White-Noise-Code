@@ -92,3 +92,28 @@ export function getCurrentDayMonthYear() {
     day: _d.getDate()
   }
 }
+
+/**
+ *
+ *
+ * @export
+ * @description 传入一个整数和date format,获取一个即日起过去的时间段数组
+ * @param {number} span
+ * @param {string} format
+ */
+export function getPastDateSpan(span: number, format: string) {
+  // 将所有时间转成时间戳(秒)来计算,避免计算跨年\月
+  let aDayStamp = 60 * 60 * 24,
+    { day, month, year } = getCurrentDayMonthYear(),
+    // 获取当天的时间戳转为秒,-1 是因为 Date 的 month 是 0-11 而我的 getCurrentDayMonthYear +1 了
+    todayStamp = new Date(year, month - 1, day).valueOf() / 1000,
+    backDate = []
+
+  for (let index = span; index > 0; index--) {
+    backDate.push(G_FN.DAYJS.unix(todayStamp - aDayStamp * index).format(format))
+  }
+
+  console.log('getPastDateSpan:', backDate)
+
+  return backDate
+}

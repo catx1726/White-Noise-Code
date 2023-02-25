@@ -46,7 +46,7 @@ import {
   type AudioSourceListType,
   type AudioSourceType
 } from '.'
-import { reactive, defineProps, onMounted } from 'vue'
+import { reactive, onMounted } from 'vue'
 import { Info } from '@/components/info_box'
 
 // Import Swiper Vue.js components
