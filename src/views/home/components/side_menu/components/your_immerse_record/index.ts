@@ -136,7 +136,7 @@ export const RecordSelect = {
     str: ['在过去七天中,你在', '${startTime}', '就已经开始专注于', '${immerseName}']
   },
   pastSevenDays: {
-    title: '往日',
+    title: '往昔',
     show: true,
     getData(immerse: ImmerseInterface) {
       let immerseTime = `${numberToCN(immerse.duration.hour)}时${numberToCN(immerse.duration.min)}分`,
