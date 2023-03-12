@@ -1,5 +1,4 @@
 .record-container {
-  
 }
 
 .record-box {
@@ -12,11 +11,14 @@
   min-width: 350px;
   max-height: 400px;
   min-height: 350px;
-  overflow-y: auto;
-  padding: 50px;
+  padding: 50px 0;
   position: absolute;
   transform: translate(-50%, -50%);
   background-color: var(--base-black-op-5);
+}
+
+.record-box > div {
+  padding:0 50px;
 }
 
 .record-box .info {
@@ -27,9 +29,30 @@
   margin: 5px 0;
 }
 
-.record-box .tips{
+.record-box .tips-box {
   bottom: 0;
   position: absolute;
+}
+
+.record-type-item .title {
+  font-size: 24px;
+  margin-bottom: calc(var(--base-pd-md) / 2);
+}
+
+.record-type-item {
+  margin-bottom: calc(var(--base-pd-md) * 2);
+}
+
+.record-type-item:last-child {
+  margin-bottom: 0;
+}
+
+.record-type-item .content {
+  padding: calc(var(--base-pd-md) / 2) 0;
+}
+
+.record-type-item .title + .content {
+  padding-top: 0;
 }
 
 .modal {

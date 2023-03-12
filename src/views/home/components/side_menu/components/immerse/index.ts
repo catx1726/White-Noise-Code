@@ -102,6 +102,8 @@ export async function findImmerse(
     dayDBResult: Array<ImmerseInterface>,
     immerseIndex: number
 
+  if (!yearDBResult) await initImmerseDB()
+
   if (!yearDBResult[date]) yearDBResult[date] = []
 
   // find day

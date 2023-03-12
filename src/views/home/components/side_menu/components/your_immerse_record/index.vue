@@ -6,11 +6,24 @@
         <nothing-here-comp v-if="!pgInfo.data || !pgInfo.data.length" class="h-full flex items-center justify-center">
           <span class="text-xl">暂无专注</span>
         </nothing-here-comp>
-        <div v-else class="flex flex-col items-start justify-center">
-          <span class="info self-start">过去{{ ImmerseConfig.recordPastSpan }}天,你一共专注于 {{ pgInfo.immerseLen }} 项事宜,具体如下:</span>
-          <span v-for="(item, index) of pgInfo.data" :key="`${item.immerseName}-${index}`" class="immerse-item">
-            {{ index + 1 }}. {{ handleDataShow(item) }}
-          </span>
+        <div v-else class="overflow-y-auto h-full">
+          <div :title="RecordSelect.pastSevenDays.title" class="record-type-item">
+            <div class="flex flex-col">
+              <span class="title">{{ RecordSelect.pastSevenDays.title }}</span>
+              <span v-for="item of pgInfo.data" :key="item.immerseName" class="content">{{ RecordSelect.pastSevenDays.getData(item) }}</span>
+            </div>
+          </div>
+          <div
+            v-for="item of [RecordSelect.pastSevenDaysMostLong, RecordSelect.pastSevenDaysMostMorning, RecordSelect.pastSevenDaysMostNight]"
+            :key="item.title"
+            class="record-type-item"
+            :title="item.title"
+          >
+            <div v-if="item.show" class="flex flex-col">
+              <span class="title">{{ item.title }}</span>
+              <span class="content">{{ item.getData(pgInfo.data) }}</span>
+            </div>
+          </div>
         </div>
 
         <div class="tips-box flex justify-center">
@@ -31,7 +44,7 @@ export interface PageConfigInterface {
 }
 
 import { onMounted, reactive } from 'vue'
-import { getPastDateSpanImmerseRecord, handleDataShow } from './index'
+import { getPastDateSpanImmerseRecord, RecordSelect } from './index'
 import { ImmerseText, type ImmerseInterface, ImmerseConfig } from '../immerse/index'
 import NothingHereComp from '@/components/nothing_here/index.vue'
 

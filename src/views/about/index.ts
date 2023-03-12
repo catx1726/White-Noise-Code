@@ -49,7 +49,7 @@ export const AboutMD = `
 <h2 id="相关工具和网站">相关工具和网站</h2>
 <ul>
 <li>代码托管在 <a href="https://github.com/catx1726/White-Noise-Code">GitHub </a></li>
-<li>内置音源来自 <a href="https://freesound.org/">freesound</a></li>
+<li>内置音源来自 <a href="https://freesound.org/">FreeSound</a></li>
 <li>内置图片素材来自 <a href="https://www.dpm.org.cn/lights/royal.html">故宫博物馆</a></li>
 <li>古诗推荐来自 <a href="https://www.jinrishici.com/doc/">今日诗词</a></li>
 </ul>
@@ -60,4 +60,7 @@ export const AboutMD = `
 <p>初完于 2022-10-05 19:09</p>
 <p>二改于 2022-10-07 13:30</p>
 <p>三改于 2023-01-18 22:16</p>
+<p>再改于 2023-01-20 19:32</p>
+<p>再改于 2023-02-25 19:47</p>
+<p>再改于 2023-03-11 08:55</p>
 `

@@ -1,3 +1,4 @@
+import { G_FN } from '@/main'
 import { getLastDate, numberToCN, getPastDateSpan } from '../../../../../../utils/index'
 import { findImmerse, type ImmerseInterface } from '../immerse/index'
 import { ImmerseConfig } from '../immerse/index'
@@ -20,7 +21,7 @@ export async function getPastDateSpanImmerseRecord(span: number) {
       for (const item of data) {
         finded = backData.find((fItem) => fItem.startTime === item.startTime)
         findedIndex = backData.findIndex((fItem) => fItem.startTime === item.startTime)
-        // if (item.duration.min < ImmerseConfig.autoSaveInterval) continue
+        if (item.duration.min < ImmerseConfig.autoSaveInterval) continue
         if (!finded) backData.push(item)
         if (!finded?.endTime) continue
         if (finded.endTime >= item.endTime) continue
@@ -48,14 +49,107 @@ export async function getPastDateSpanImmerseRecord(span: number) {
   return backData.filter((i) => i)
 }
 
-export function handleDataShow(immerse: ImmerseInterface) {
-  let immerseTime = `${numberToCN(immerse.duration.hour)}时${numberToCN(immerse.duration.min)}分${numberToCN(immerse.duration.sec)}秒`,
-    str = `专注于"${immerse.immerseName}",共专注了${immerseTime}`
+// TODO 增加专注回顾类别: 专注事件与时间统计 / 专注事件比例 / 专注回忆
+// TODO 增加专注回顾项: 专注回忆 - 过去七天最长时间 / 过去七天最早一次 / 过去七天最晚一次
+// TODO 增加专注回顾图表: 专注事件比例 - 用 饼图 表示过去七天专注的事项比例
 
-  if (!immerse.immerseName || immerse.immerseName === ImmerseConfig.defaultImmerseName) {
-    str = `并未写明专注于什么事,但你听了${immerseTime}的白噪音`
+export const RecordSelect = {
+  pastSevenDaysMostLong: {
+    title: '恒心',
+    show: true,
+    getData(list: Array<ImmerseInterface>) {
+      let max = 0,
+        maxImmerse = null
+
+      for (const item of list) {
+        if (item.endTime - item.startTime >= max) {
+          max = item.endTime - item.startTime
+          maxImmerse = item
+        }
+      }
+
+      if (!maxImmerse) {
+        this.show = false
+        return
+      }
+
+      return this.showData(maxImmerse)
+    },
+    showData(immerse: ImmerseInterface) {
+      let str = this.str.join('')
+      str = str.replace('${immerseName}', `"${immerse.immerseName === ImmerseConfig.defaultImmerseName ? '未写明' : immerse.immerseName}"`)
+      str = str.replace('${durationStr}', `${numberToCN(immerse.duration.hour)}时${numberToCN(immerse.duration.min)}分`)
+      return str
+    },
+    str: ['在过去七天中,你专注的最久的是', '${immerseName}', ',一共${durationStr}', ',相信你的恒心,终会给予你回报']
+  },
+  pastSevenDaysMostNight: {
+    title: '静夜',
+    condition: { hour: 19, min: 0 },
+    show: true,
+    getData(list: Array<ImmerseInterface>) {
+      let nightImmerse = null
+
+      for (const item of list) {
+        if ((!nightImmerse || item.endTime >= nightImmerse.endTime) && +G_FN.DAYJS(item.endTime).format('HH') >= this.condition.hour) nightImmerse = item
+      }
+
+      if (!nightImmerse) {
+        this.show = false
+        return
+      }
+
+      return this.showData(nightImmerse)
+    },
+    showData(immerse: ImmerseInterface) {
+      let str = this.str.join('')
+      str = str.replace('${endTime}', `${G_FN.DAYJS(immerse.endTime).format('HH:mm')}`)
+      str = str.replace('${immerseName}', `"${immerse.immerseName === ImmerseConfig.defaultImmerseName ? '未写明' : immerse.immerseName}"`)
+      return str
+    },
+    str: ['在过去七天中,你在', '${endTime}', '仍然专注于', '${immerseName}', ',那一定是个宁静且愉悦的夜晚']
+  },
+  pastSevenDaysMostMorning: {
+    title: '朝阳',
+    show: true,
+    condition: { hour: 9, min: 0 },
+    getData(list: Array<ImmerseInterface>) {
+      let morningImmerse = null
+
+      for (const item of list) {
+        if ((!morningImmerse || item.startTime <= morningImmerse.startTime) && +G_FN.DAYJS(item.startTime).format('HH') <= this.condition.hour) { morningImmerse = item }
+      }
+
+      if (!morningImmerse) {
+        this.show = false
+        return
+      }
+
+      return this.showData(morningImmerse)
+    },
+    showData(immerse: ImmerseInterface) {
+      let str = this.str.join('')
+      str = str.replace('${startTime}', `${G_FN.DAYJS(immerse.startTime).format('HH:mm')}`)
+      str = str.replace('${immerseName}', `"${immerse.immerseName === ImmerseConfig.defaultImmerseName ? '未写明' : immerse.immerseName}"`)
+      return str
+    },
+    str: ['在过去七天中,你在', '${startTime}', '就已经开始专注于', '${immerseName}']
+  },
+  pastSevenDays: {
+    title: '往日',
+    show: true,
+    getData(immerse: ImmerseInterface) {
+      let immerseTime = `${numberToCN(immerse.duration.hour)}时${numberToCN(immerse.duration.min)}分`,
+        str = `专注于"${immerse.immerseName}",共专注了${immerseTime}`
+
+      if (!immerse.immerseName || immerse.immerseName === ImmerseConfig.defaultImmerseName) {
+        str = `并未写明专注于什么事,但你听了${immerseTime}的白噪音`
+      }
+
+      console.log('handleDatashowData:', immerse)
+
+      return str
+    },
+    str: ['在过去的七天中,你一共专注于', '件事,分别如下:']
   }
-
-  console.log('handleDataShow:', immerse)
-  return str
 }
