@@ -164,7 +164,7 @@ export const RecordSelect = {
         min += item.duration.min
         if (min >= 60) {
           hour++
-          min = 0
+          min -= 60
         }
       }
 
