@@ -58,12 +58,12 @@ export const RecordSelect = {
     title: '恒心',
     show: true,
     getData(list: Array<ImmerseInterface>) {
-      let max = 0,
+      let maxHour = 0,
         maxImmerse = null
 
       for (const item of list) {
-        if (item.endTime - item.startTime >= max) {
-          max = item.endTime - item.startTime
+        if (+G_FN.DAYJS(item.endTime).format('HH') - +G_FN.DAYJS(item.startTime).format('HH') >= maxHour) {
+          maxHour = +G_FN.DAYJS(item.endTime).format('HH') - +G_FN.DAYJS(item.startTime).format('HH')
           maxImmerse = item
         }
       }
@@ -88,10 +88,12 @@ export const RecordSelect = {
     condition: { hour: 19, min: 0 },
     show: true,
     getData(list: Array<ImmerseInterface>) {
-      let nightImmerse = null
+      let nightImmerse = null,
+        loopItemHour = null
 
       for (const item of list) {
-        if ((!nightImmerse || item.endTime >= nightImmerse.endTime) && +G_FN.DAYJS(item.endTime).format('HH') >= this.condition.hour) nightImmerse = item
+        loopItemHour = +G_FN.DAYJS(item.endTime).format('HH')
+        if ((!nightImmerse || loopItemHour >= +G_FN.DAYJS(nightImmerse.endTime).format('HH')) && loopItemHour >= this.condition.hour) nightImmerse = item
       }
 
       if (!nightImmerse) {
@@ -114,10 +116,14 @@ export const RecordSelect = {
     show: true,
     condition: { hour: 9, min: 0 },
     getData(list: Array<ImmerseInterface>) {
-      let morningImmerse = null
+      let morningImmerse = null,
+        loopItemHour = null
 
       for (const item of list) {
-        if ((!morningImmerse || item.startTime <= morningImmerse.startTime) && +G_FN.DAYJS(item.startTime).format('HH') <= this.condition.hour) { morningImmerse = item }
+        loopItemHour = +G_FN.DAYJS(item.startTime).format('HH')
+        if ((!morningImmerse || loopItemHour <= +G_FN.DAYJS(morningImmerse.startTime).format('HH')) && loopItemHour <= this.condition.hour) {
+          morningImmerse = item
+        }
       }
 
       if (!morningImmerse) {
