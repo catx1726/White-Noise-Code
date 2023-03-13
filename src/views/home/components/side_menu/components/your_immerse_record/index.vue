@@ -9,8 +9,11 @@
         <div v-else class="overflow-y-auto h-full">
           <div :title="RecordSelect.pastSevenDays.title" class="record-type-item">
             <div class="flex flex-col">
-              <span class="title">{{ RecordSelect.pastSevenDays.title }}</span>
-              <span v-for="item of pgInfo.data" :key="item.immerseName" class="content">{{ RecordSelect.pastSevenDays.getData(item) }}</span>
+              <span class="title">
+                {{ RecordSelect.pastSevenDays.title }}
+              </span>
+              <span class="sub-title">{{ RecordSelect.pastSevenDays.handleImmerseSumTime(pgInfo.data) }}</span>
+              <span v-for="item of pgInfo.data" :key="item.immerseName" class="content text-sm">- {{ RecordSelect.pastSevenDays.getData(item) }}</span>
             </div>
           </div>
           <div

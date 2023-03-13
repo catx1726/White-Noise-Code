@@ -156,6 +156,20 @@ export const RecordSelect = {
 
       return str
     },
-    str: ['在过去的七天中,你一共专注于', '件事,分别如下:']
+    handleImmerseSumTime(list: Array<ImmerseInterface>) {
+      let hour = 0,
+        min = 0
+      for (const item of list) {
+        hour += item.duration.hour
+        min += item.duration.min
+        if (min >= 60) {
+          hour++
+          min = 0
+        }
+      }
+
+      return this.str.join('').replace('${immerseSumTime}', `${numberToCN(hour)}时${numberToCN(min)}分`)
+    },
+    str: ['在过去的七天中,你一共专注了', '${immerseSumTime}', ',具体事件分别如下:']
   }
 }
