@@ -8,7 +8,7 @@ export const ImmerseConfig = {
   defaultImmerseName: '万物萌生',
   // 获取过去过久的记录,默认为 7 天
   recordPastSpan: 7,
-  immerseVersion: '1.0.0'
+  immerseVersion: '1.0.1'
 }
 
 export const ImmerseText = {

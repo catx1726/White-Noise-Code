@@ -60,15 +60,15 @@ export const RecordSelect = {
     getData(list: Array<ImmerseInterface>) {
       let maxTime = 0,
         maxImmerse = null,
-        tempTime = null
+        loopItemTime = null
 
       for (const item of list) {
-        tempTime =
+        loopItemTime =
           Number(G_FN.DAYJS(item.endTime).format('HH') + G_FN.DAYJS(item.endTime).format('mm')) -
           Number(G_FN.DAYJS(item.startTime).format('HH') + G_FN.DAYJS(item.startTime).format('mm'))
-        if (tempTime >= maxTime) {
-          maxTime = tempTime
+        if (loopItemTime >= maxTime) {
           maxImmerse = item
+          maxTime = loopItemTime
         }
       }
 
@@ -98,8 +98,10 @@ export const RecordSelect = {
 
       for (const item of list) {
         loopItemTime = Number(G_FN.DAYJS(item.endTime).format('HH') + G_FN.DAYJS(item.endTime).format('mm'))
-        if ((!nightImmerse || !mostNightTime || loopItemTime >= mostNightTime) && loopItemTime >= Number(this.condition.hour + this.condition.min)) { nightImmerse = item }
-        mostNightTime = loopItemTime
+        if ((!nightImmerse || !mostNightTime || loopItemTime >= mostNightTime) && loopItemTime >= Number(this.condition.hour + this.condition.min)) {
+          nightImmerse = item
+          mostNightTime = loopItemTime
+        }
       }
 
       if (!nightImmerse) {
