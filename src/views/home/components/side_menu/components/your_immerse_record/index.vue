@@ -29,7 +29,7 @@
           </div>
         </div>
 
-        <div class="tips-box flex justify-center">
+        <div class="tips-box flex justify-center w-full">
           <span class="info tips text-sm text-accent">{{ ImmerseText.explanation }}</span>
         </div>
       </div>

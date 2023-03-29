@@ -58,12 +58,16 @@ export const RecordSelect = {
     title: '恒心',
     show: true,
     getData(list: Array<ImmerseInterface>) {
-      let maxHour = 0,
-        maxImmerse = null
+      let maxTime = 0,
+        maxImmerse = null,
+        tempTime = null
 
       for (const item of list) {
-        if (+G_FN.DAYJS(item.endTime).format('HH') - +G_FN.DAYJS(item.startTime).format('HH') >= maxHour) {
-          maxHour = +G_FN.DAYJS(item.endTime).format('HH') - +G_FN.DAYJS(item.startTime).format('HH')
+        tempTime =
+          Number(G_FN.DAYJS(item.endTime).format('HH') + G_FN.DAYJS(item.endTime).format('mm')) -
+          Number(G_FN.DAYJS(item.startTime).format('HH') + G_FN.DAYJS(item.startTime).format('mm'))
+        if (tempTime >= maxTime) {
+          maxTime = tempTime
           maxImmerse = item
         }
       }
@@ -85,15 +89,17 @@ export const RecordSelect = {
   },
   pastSevenDaysMostNight: {
     title: '静夜',
-    condition: { hour: 19, min: 0 },
+    condition: { hour: '19', min: '00' },
     show: true,
     getData(list: Array<ImmerseInterface>) {
       let nightImmerse = null,
-        loopItemHour = null
+        loopItemTime = null,
+        mostNightTime = null
 
       for (const item of list) {
-        loopItemHour = +G_FN.DAYJS(item.endTime).format('HH')
-        if ((!nightImmerse || loopItemHour >= +G_FN.DAYJS(nightImmerse.endTime).format('HH')) && loopItemHour >= this.condition.hour) nightImmerse = item
+        loopItemTime = Number(G_FN.DAYJS(item.endTime).format('HH') + G_FN.DAYJS(item.endTime).format('mm'))
+        if ((!nightImmerse || !mostNightTime || loopItemTime >= mostNightTime) && loopItemTime >= Number(this.condition.hour + this.condition.min)) { nightImmerse = item }
+        mostNightTime = loopItemTime
       }
 
       if (!nightImmerse) {
@@ -114,15 +120,17 @@ export const RecordSelect = {
   pastSevenDaysMostMorning: {
     title: '朝阳',
     show: true,
-    condition: { hour: 9, min: 0 },
+    condition: { hour: '9', min: '00' },
     getData(list: Array<ImmerseInterface>) {
       let morningImmerse = null,
-        loopItemHour = null
+        loopItemTime = null,
+        mostMorningTime = null
 
       for (const item of list) {
-        loopItemHour = +G_FN.DAYJS(item.startTime).format('HH')
-        if ((!morningImmerse || loopItemHour <= +G_FN.DAYJS(morningImmerse.startTime).format('HH')) && loopItemHour <= this.condition.hour) {
+        loopItemTime = Number(G_FN.DAYJS(item.startTime).format('HH') + G_FN.DAYJS(item.startTime).format('mm'))
+        if ((!morningImmerse || !mostMorningTime || loopItemTime <= mostMorningTime) && loopItemTime <= Number(this.condition.hour + this.condition.min)) {
           morningImmerse = item
+          mostMorningTime = loopItemTime
         }
       }
 
