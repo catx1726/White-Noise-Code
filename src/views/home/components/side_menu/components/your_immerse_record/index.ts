@@ -49,8 +49,8 @@ export async function getPastDateSpanImmerseRecord(span: number) {
   return backData.filter((i) => i)
 }
 
-// TODO 增加专注回顾类别: 专注事件与时间统计 / 专注事件比例 / 专注回忆
-// TODO 增加专注回顾项: 专注回忆 - 过去七天最长时间 / 过去七天最早一次 / 过去七天最晚一次
+// OK 增加专注回顾类别: 专注事件与时间统计 / 专注事件比例 / 专注回忆
+// OK 增加专注回顾项: 专注回忆 - 过去七天最长时间 / 过去七天最早一次 / 过去七天最晚一次
 // TODO 增加专注回顾图表: 专注事件比例 - 用 饼图 表示过去七天专注的事项比例
 
 export const RecordSelect = {
