@@ -58,18 +58,21 @@ export const RecordSelect = {
     title: '恒心',
     show: true,
     getData(list: Array<ImmerseInterface>) {
-      let maxTime = 0,
+      let maxTime = { hour: 0, min: 0 },
         maxImmerse = null,
         loopItemTime = null
 
       for (const item of list) {
-        loopItemTime =
-          Number(G_FN.DAYJS(item.endTime).format('HH') + G_FN.DAYJS(item.endTime).format('mm')) -
-          Number(G_FN.DAYJS(item.startTime).format('HH') + G_FN.DAYJS(item.startTime).format('mm'))
-        if (loopItemTime >= maxTime) {
-          maxImmerse = item
-          maxTime = loopItemTime
-        }
+        loopItemTime = { hour: +item.duration.hour, min: +item.duration.min }
+
+        console.log('most long loop:', list, item, loopItemTime, maxTime)
+
+        if (loopItemTime.hour < maxTime.hour) continue
+
+        if (loopItemTime.min < maxTime.min) continue
+
+        maxImmerse = item
+        maxTime = loopItemTime
       }
 
       if (!maxImmerse) {
