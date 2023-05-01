@@ -69,7 +69,7 @@ export const RecordSelect = {
 
         if (loopItemTime.hour < maxTime.hour) continue
 
-        if (loopItemTime.min < maxTime.min) continue
+        if (loopItemTime.hour === maxTime.hour && loopItemTime.min < maxTime.min) continue
 
         maxImmerse = item
         maxTime = loopItemTime
